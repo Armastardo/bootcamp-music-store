@@ -1,7 +1,7 @@
 CREATE DATABASE "music-store";
 
 CREATE TABLE cat_client_type (
-	cat_client_type_id integer,
+	cat_client_type_id SERIAL,
 	cat_client_type varchar (50),
 	cat_client_description varchar (150),
 	is_active boolean,
@@ -9,21 +9,21 @@ CREATE TABLE cat_client_type (
 );
 
 CREATE TABLE client (
-	client_id integer,
+	client_id SERIAL,
 	client_name varchar(50),
 	client_surname varchar(50),
 	client_mail varchar(100),
-	is_active boolean,
-	stars integer,
+	is_active boolean DEFAULT TRUE,
+	stars integer DEFAULT 0,
 	PRIMARY KEY(client_id),
-	cat_client_type_id integer,
+	cat_client_type_id integer DEFAULT 1,
 	CONSTRAINT fk_client_type
 		FOREIGN KEY (cat_client_type_id)
 			REFERENCES cat_client_type(cat_client_type_id)
 );
 
 CREATE TABLE cat_repayment_type (
-	cat_repayment_type_id integer,
+	cat_repayment_type_id SERIAL,
 	cat_repayment_type varchar(100),
 	cat_repayment_description varchar(255),
 	is_active boolean,
@@ -31,7 +31,7 @@ CREATE TABLE cat_repayment_type (
 );
 
 CREATE TABLE invoice (
-	invoice_id integer,
+	invoice_id SERIAL,
 	client_id integer,
 	invoice_date date,
 	amount decimal,
@@ -43,7 +43,7 @@ CREATE TABLE invoice (
 );
 
 CREATE TABLE repayment (
-	repayment_id integer,
+	repayment_id SERIAL,
 	repayment_date date,
 	invoice_id integer,
 	CONSTRAINT fk_repayment_invoice_id
@@ -60,7 +60,7 @@ CREATE TABLE repayment (
 );
 
 CREATE TABLE int_invoice_album (
-	int_invoice_album_id integer,
+	int_invoice_album_id SERIAL,
 	invoice_id integer,
 	CONSTRAINT fk_int_invoice_id
 		FOREIGN KEY (invoice_id)
@@ -72,7 +72,7 @@ CREATE TABLE int_invoice_album (
 );
 
 CREATE TABLE album (
-	album_id integer,
+	album_id SERIAL,
 	album_name varchar(150),
 	year_creation date,
 	description varchar(255),
@@ -84,7 +84,7 @@ CREATE TABLE album (
 );
 
 CREATE TABLE cat_genre (
-	cat_genre_id integer,
+	cat_genre_id SERIAL,
 	cat_genre_name varchar(255),
 	description varchar (255),
 	is_active boolean,
@@ -92,7 +92,7 @@ CREATE TABLE cat_genre (
 );
 
 CREATE TABLE song (
-	song_id integer,
+	song_id SERIAL,
 	song_name varchar(255),
 	duration integer,
 	cat_genre_id integer,
@@ -108,7 +108,7 @@ CREATE TABLE song (
 );
 
 CREATE TABLE house_record (
-	house_record_id integer,
+	house_record_id SERIAL,
 	house_record_name varchar(255),
 	year_from date,
 	description varchar(255),
@@ -117,7 +117,7 @@ CREATE TABLE house_record (
 );
 
 CREATE TABLE artist (
-	artist_id integer,
+	artist_id SERIAL,
 	artist_name varchar(255),
 	year_from date,
 	is_single boolean,
@@ -139,3 +139,12 @@ ALTER TABLE album
 	ADD CONSTRAINT fk_album_artist_id
 		FOREIGN KEY (artist_id)
 			REFERENCES artist (artist_id);
+
+INSERT INTO cat_client_type VALUES
+(DEFAULT, 'Bronce', '0 a 5 estrellas', TRUE),
+(DEFAULT, 'Plata', '6 a 20 estrellas', TRUE),
+(DEFAULT, 'Oro', '21 a 40 estrellas', TRUE), 
+(DEFAULT, 'Platinum', '41 estrellas en adelante', TRUE);
+
+INSERT INTO client VALUES
+(DEFAULT, 'Generic', 'Generic', 'Generic');
