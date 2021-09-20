@@ -1,6 +1,7 @@
 package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.ClientDAO;
+import com.globant.musicstore.dao.ClientTypeDAO;
 import com.globant.musicstore.dto.ClientDTO;
 import com.globant.musicstore.entity.Client;
 import com.globant.musicstore.mapper.ClientMapper;
@@ -16,6 +17,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientMapper clientMapper;
+
+    @Autowired
+    private ClientTypeDAO clientTypeDAO;
 
     @Override
     public ClientDTO createClient(ClientDTO clientDTO) {
@@ -39,7 +43,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDTO updateClient(ClientDTO clientDTO) {
-        Client = clientDAO.getById(id);
+        Client client = clientDAO.getById(clientDTO.getId());
+        client.setName(clientDTO.getName());
+        client.setSurname(clientDTO.getSurname());
+        client.setMail(clientDTO.getMail());
+        client.setStars(clientDTO.getStars());
+        client.setClientType(clientTypeDAO.getClientType(clientDTO.getClientType()));
+        client.setIsActive(clientDTO.getIsActive());
         return null;
     }
 
