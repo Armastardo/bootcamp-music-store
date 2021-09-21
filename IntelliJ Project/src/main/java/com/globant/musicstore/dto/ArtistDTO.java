@@ -1,7 +1,14 @@
 package com.globant.musicstore.dto;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@Builder
 public class ArtistDTO {
     private Long id;
     private List<AlbumDTO> albums;

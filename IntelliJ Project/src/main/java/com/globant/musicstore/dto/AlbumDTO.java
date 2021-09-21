@@ -1,6 +1,5 @@
 package com.globant.musicstore.dto;
 
-import com.globant.musicstore.entity.Album;
 import com.globant.musicstore.entity.Song;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,8 +29,4 @@ public class AlbumDTO {
     private Long artistId;
     private List<Song> songs;
 
-   /* @Override
-    public String toString(){
-        return JacksonMapper.INSTANCE.toJsonString(this);
-    }*/
 }
