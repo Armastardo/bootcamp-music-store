@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface ArtistDAO extends JpaRepository<Artist, Long> {
     @Query("SELECT artist FROM Artist artist WHERE artist.id IN :id")
     Artist getArtist(Long id);
+
 }
