@@ -2,16 +2,16 @@ package com.globant.musicstore.utils;
 
 public class Constants {
 
-    public enum ResponseConstants{
+    public enum ResponseConstants {
         SUCCESS("Successful"), FAILURE("Unsuccessful");
 
         private String description;
 
-        ResponseConstants(final String description){
+        ResponseConstants(final String description) {
             this.description = description;
         }
 
-        public String getDescription(){
+        public String getDescription() {
             return description;
         }
     }
