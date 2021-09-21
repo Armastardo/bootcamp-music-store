@@ -4,10 +4,12 @@ import com.globant.musicstore.dao.ClientDAO;
 import com.globant.musicstore.dao.ClientTypeDAO;
 import com.globant.musicstore.dto.ClientDTO;
 import com.globant.musicstore.entity.Client;
-import com.globant.musicstore.mapper.ClientMapper;
+import com.globant.musicstore.utils.mapper.ClientMapper;
 import com.globant.musicstore.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -35,9 +37,15 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public List<ClientDTO> getAllClients() {
+        return clientMapper.clientEntityListToDTOList(clientDAO.findAll());
+    }
+
+
+    @Override
     public ClientDTO addStars(Long id, Integer stars) {
         Client client = clientDAO.getById(id);
-        client.setStars(client.getStars()+stars);
+        client.setStars(client.getStars() + stars);
         return clientMapper.clientEntityToDTO(clientDAO.save(client));
     }
 
