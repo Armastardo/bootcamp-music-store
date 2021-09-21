@@ -1,6 +1,6 @@
 package com.globant.musicstore.service;
 
-import com.globant.musicstore.dto.InvoiceDTO;
+import com.globant.musicstore.dto.requestDTO.InvoiceDTO;
 
 public interface InvoiceService {
 

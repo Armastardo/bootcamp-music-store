@@ -3,7 +3,7 @@ package com.globant.musicstore.service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.globant.musicstore.dao.IntInvoiceAlbumDAO;
-import com.globant.musicstore.dto.IntInvoiceAlbumDTO;
+import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
 import com.globant.musicstore.entity.Invoice;
 import com.globant.musicstore.mapper.IntInvoiceAlbumDTOMapper;
