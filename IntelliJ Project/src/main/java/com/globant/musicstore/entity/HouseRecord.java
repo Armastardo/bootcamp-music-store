@@ -36,7 +36,7 @@ public class HouseRecord {
     @Column(name = "house_record_name", nullable = false)
     private String name;
     @Column(name = "year_from", nullable = false)
-    private Date year_from;
+    private Date yearFrom;
     @Column(name = "description", nullable = false)
     private String description;
     @Column(name = "is_active", nullable = false)

@@ -13,7 +13,7 @@ import java.util.Set;
 public class HouseRecordDTO {
     private long id;
     private String name;
-    private Date year_from;
+    private Date yearFrom;
     private String description;
     private boolean isActive = true;
     private Set<Artist> artists;

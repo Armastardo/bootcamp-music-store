@@ -36,7 +36,7 @@ public class Artist {
     @Column(name = "artist_name", nullable = false)
     private String name;
     @Column(name = "year_from", nullable = false)
-    private Date year_from;
+    private Date yearFrom;
     @Column(name = "is_single", nullable = false)
     private boolean isSingle;
     @Column(name = "description", nullable = false)
