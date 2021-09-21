@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.globant.musicstore.utils.Constants.ITEM_DOES_NOT_EXIST;
 import static com.globant.musicstore.utils.Constants.ITEM_IS_ALREADY_DISABLE;
@@ -28,16 +29,33 @@ public class AlbumServiceImpl implements AlbumService {
     @Autowired
     AlbumDAO albumDAO;
 
-    public List<Album> showList(){
-        return albumDAO.findAll();
+    @Override
+    public List<AlbumDTO> showList(){
+        List<Album> albums = albumDAO.findAll();
+        List<AlbumDTO> albumDTOList = albums.stream().map(album -> {
+            return AlbumDTO.builder().
+                    id(album.getId()).
+                    name(album.getName()).
+                    yearCreation(album.getYearCreation()).
+                    description(album.getDescription()).
+                    price(album.getPrice()).
+                    isActive(album.getIsActive()).
+                    quantityAvailable(album.getQuantityAvailable()).
+                    artistId(album.getArtist().getId()).
+                    songs(album.getSongs()).
+                    build();
+        }).collect(Collectors.toList());
+        return albumDTOList;
     }
 
-    public AlbumDTO addAlbum(Long id_artist, AlbumDTO albumDTO){
-        artistService.getArtistById(id_artist);
+    @Override
+    public AlbumDTO addAlbum(Long idArtist, AlbumDTO albumDTO){
+        artistService.getArtistById(idArtist);
         return albumMapper.albumEntityToDTO(albumDAO.save(albumMapper.albumDTOToEntity(albumDTO)));
     }
-    public AlbumDTO getAlbumById(Long id_album){
-        Album album = albumDAO.findById(id_album).orElse(null);
+    @Override
+    public AlbumDTO getAlbumById(Long idAlbum){
+        Album album = albumDAO.findById(idAlbum).orElse(null);
 
         if(album == null){
             throw new NotFoundException(ITEM_DOES_NOT_EXIST);
@@ -45,23 +63,25 @@ public class AlbumServiceImpl implements AlbumService {
         AlbumDTO albumDTO = albumMapper.albumEntityToDTO(album);
         return albumDTO;
     }
-    public void deleteAlbum(Long id_album){
-        AlbumDTO albumDTO = getAlbumById(id_album);
-        if(albumDTO.getIs_active() == true){
-            albumDTO.setIs_active(false);
-            updateAlbum(id_album, albumDTO);
+    @Override
+    public void deleteAlbum(Long idAlbum){
+        AlbumDTO albumDTO = getAlbumById(idAlbum);
+        if(albumDTO.getIsActive() == true){
+            albumDTO.setIsActive(false);
+            updateAlbum(idAlbum, albumDTO);
         }else{
             throw new NotFoundException(ITEM_IS_ALREADY_DISABLE);
         }
     }
 
     @Override
-    public List<Song> getAlbumSongs(Long id_album) {
-        return albumDAO.getById(id_album).getSongs();
+    public List<Song> getAlbumSongs(Long idAlbum) {
+        return albumDAO.getById(idAlbum).getSongs();
     }
 
-    public AlbumDTO updateAlbum(Long id_album, AlbumDTO albumDTO){
-        getAlbumById(id_album);
+    @Override
+    public AlbumDTO updateAlbum(Long idAlbum, AlbumDTO albumDTO){
+        getAlbumById(idAlbum);
         return albumMapper.albumEntityToDTO(albumDAO.save(albumMapper.albumDTOToEntity(albumDTO)));
     }
 }

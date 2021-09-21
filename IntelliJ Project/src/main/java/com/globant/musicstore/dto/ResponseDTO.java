@@ -1,26 +1,29 @@
 package com.globant.musicstore.dto;
-import com.globant.musicstore.utils.Constants.ResponseConstants;
+
+import com.globant.musicstore.utils.Constants;
 
 public class ResponseDTO <T>{
-    private ResponseConstants responseConstants;
+
+    private Constants.ResponseConstants responseConstants;
     private String message;
     private T content;
 
     public ResponseDTO(){
+
     }
 
-    public ResponseDTO(ResponseConstants responseConstants, String message, T content){
+    public ResponseDTO(Constants.ResponseConstants responseConstants, String message, T content){
         this.responseConstants = responseConstants;
         this.message = message;
         this.content = content;
 
     }
 
-    public ResponseConstants getResponseConstants() {
+    public Constants.ResponseConstants getResponseConstants() {
         return responseConstants;
     }
 
-    public void setResponseConstants(ResponseConstants responseConstants) {
+    public void setResponseConstants(Constants.ResponseConstants responseConstants) {
         this.responseConstants = responseConstants;
     }
 

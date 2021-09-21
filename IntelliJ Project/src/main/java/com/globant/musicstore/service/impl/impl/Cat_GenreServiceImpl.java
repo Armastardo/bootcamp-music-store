@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class Cat_GenreServiceImpl implements Cat_GenreService {
 
     @Override
-    public Cat_GenreDTO getCatGenreById(Long id_catGenre) {
+    public Cat_GenreDTO getCatGenreById(Long idCatGenre) {
         return null;
     }
 }

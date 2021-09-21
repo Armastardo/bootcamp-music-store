@@ -1,14 +1,19 @@
 package com.globant.musicstore.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Data
+
 @Entity
 @Table(name = "album")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Album {
 
     @Id
@@ -19,16 +24,16 @@ public class Album {
     private String name;
 
     @Column(name = "year_creation")
-    private Date year_creation;
+    private Date yearCreation;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "is_active")
-    private Boolean is_active;
+    private Boolean isActive;
 
     @Column(name = "quantity_available")
-    private Integer quantity_available;
+    private Integer quantityAvailable;
 
     @Column(name = "price")
     private Double price;
@@ -39,8 +44,5 @@ public class Album {
 
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
-
-    /*@Column(name = "artist_id")
-    private Long artist_id;*/
 
 }

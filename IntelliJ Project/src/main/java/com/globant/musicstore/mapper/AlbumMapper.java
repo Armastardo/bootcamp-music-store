@@ -1,37 +1,52 @@
 package com.globant.musicstore.mapper;
 
+import com.globant.musicstore.dao.ArtistDAO;
 import com.globant.musicstore.dto.AlbumDTO;
-import com.globant.musicstore.dto.SongDTO;
 import com.globant.musicstore.entity.Album;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class AlbumMapper {
+
+    @Autowired
+    ArtistDAO artistDAO;
+
     public Album albumDTOToEntity(AlbumDTO albumDTO){
         Album album = new Album();
         album.setId(albumDTO.getId());
         album.setName(albumDTO.getName());
-        album.setYear_creation(albumDTO.getYear_creation());
+        album.setYearCreation(albumDTO.getYearCreation());
         album.setDescription(albumDTO.getDescription());
         album.setPrice(albumDTO.getPrice());
-        album.setQuantity_available(albumDTO.getQuantity_available());
-        album.setIs_active(albumDTO.getIs_active());
+        album.setQuantityAvailable(albumDTO.getQuantityAvailable());
+        album.setIsActive(albumDTO.getIsActive());
         album.setSongs(albumDTO.getSongs());
-        album.setArtist(albumDTO.getArtist());
+        album.setArtist(artistDAO.getArtist(albumDTO.getArtistId()));
         return album;
     }
 
-    public AlbumDTO albumEntityToDTO(Album album){
+    public AlbumDTO albumEntityToDTO(Album album) {
         AlbumDTO albumDTO = new AlbumDTO();
         albumDTO.setId(album.getId());
         albumDTO.setName(album.getName());
-        albumDTO.setYear_creation(album.getYear_creation());
+        albumDTO.setYearCreation(album.getYearCreation());
         albumDTO.setDescription(album.getDescription());
         albumDTO.setPrice(album.getPrice());
-        albumDTO.setQuantity_available(album.getQuantity_available());
-        albumDTO.setIs_active(album.getIs_active());
+        albumDTO.setQuantityAvailable(album.getQuantityAvailable());
+        albumDTO.setIsActive(album.getIsActive());
         albumDTO.setSongs(album.getSongs());
-        albumDTO.setArtist(album.getArtist());
+        albumDTO.setArtistId(album.getArtist().getId());
         return albumDTO;
     }
+
+    public List<AlbumDTO> listAlbumToDTO(List<Album> albumList){
+        List<AlbumDTO> albumDTOList = new ArrayList<AlbumDTO>();
+        albumList.forEach(album -> albumDTOList.add(albumEntityToDTO(album)));
+        return albumDTOList;
+    }
+
 }

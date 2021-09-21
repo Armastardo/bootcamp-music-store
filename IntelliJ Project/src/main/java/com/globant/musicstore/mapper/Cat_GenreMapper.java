@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Cat_GenreMapper {
-    public Cat_Genre cat_genreDTOToEntity(Cat_GenreDTO cat_genreDTO){
-        Cat_Genre cat_genre = new Cat_Genre();
-        return cat_genre;
+    public Cat_Genre cat_genreDTOToEntity(Cat_GenreDTO catGenreDTO){
+        Cat_Genre catGenre = new Cat_Genre();
+        return catGenre;
     }
-    public Cat_GenreDTO cat_genreEntityToDTO(Cat_Genre cat_genre){
-        Cat_GenreDTO cat_genreDTO = new Cat_GenreDTO();
-        return cat_genreDTO;
+    public Cat_GenreDTO cat_genreEntityToDTO(Cat_Genre catGenre){
+        Cat_GenreDTO catGenreDTO = new Cat_GenreDTO();
+        return catGenreDTO;
     }
 }

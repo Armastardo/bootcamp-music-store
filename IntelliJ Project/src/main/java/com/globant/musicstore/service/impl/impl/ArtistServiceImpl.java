@@ -20,8 +20,8 @@ public class ArtistServiceImpl implements ArtistService {
     @Autowired
     ArtistMapper artistMapper;
     @Override
-    public ArtistDTO getArtistById(Long id_artist) {
-        Artist artist = artistDAO.findById(id_artist).orElse(null);
+    public ArtistDTO getArtistById(Long idArtist) {
+        Artist artist = artistDAO.findById(idArtist).orElse(null);
 
         if(artist == null){
             throw new NotFoundException(ITEM_DOES_NOT_EXIST);

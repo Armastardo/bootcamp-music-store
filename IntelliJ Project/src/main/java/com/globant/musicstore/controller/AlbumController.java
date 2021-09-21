@@ -19,27 +19,27 @@ public class AlbumController {
     @Autowired
     AlbumService albumService;
 
-    @PostMapping(path = "/add/{id_artist}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseDTO<AlbumDTO>> addAlbum(@PathVariable Long id_artist, @RequestBody AlbumDTO albumDTO) {
-        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, albumService.addAlbum(id_artist, albumDTO));
+    @PostMapping(path = "/add/{idArtist}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseDTO<AlbumDTO>> addAlbum(@PathVariable Long idArtist, @RequestBody AlbumDTO albumDTO) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, albumService.addAlbum(idArtist, albumDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping("delete/{id_album}")
-    public String deleteAlbum(@PathVariable Long id_album) {
-        albumService.deleteAlbum(id_album);
+    @PutMapping("delete/{idAlbum}")
+    public String deleteAlbum(@PathVariable Long idAlbum) {
+        albumService.deleteAlbum(idAlbum);
         return ITEM_DELETED_SUCCESSFULLY;
     }
 
-    @RequestMapping(path = "/{id_album}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseDTO<AlbumDTO>> getAlbumById(@PathVariable Long id_album, @RequestBody AlbumDTO albumDTO) {
-        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, albumService.getAlbumById(id_album));
+    @RequestMapping(path = "/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseDTO<AlbumDTO>> getAlbumById(@PathVariable Long idAlbum) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, albumService.getAlbumById(idAlbum));
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/songsList/{id_album}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseDTO<AlbumDTO>> getAlbumSongs(@PathVariable Long id_album) {
-        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, albumService.getAlbumSongs(id_album));
+    @RequestMapping(path = "/songsList/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseDTO<AlbumDTO>> getAlbumSongs(@PathVariable Long idAlbum) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, albumService.getAlbumSongs(idAlbum));
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
@@ -49,9 +49,9 @@ public class AlbumController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @PutMapping(path = "update/{id_album}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResponseDTO<AlbumDTO>> updateAlbum(@PathVariable Long id_album, @RequestBody AlbumDTO albumDTO) {
-        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_UPDATED_SUCCESSFULLY, albumService.updateAlbum(id_album, albumDTO));
+    @PutMapping(path = "update/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseDTO<AlbumDTO>> updateAlbum(@PathVariable Long idAlbum, @RequestBody AlbumDTO albumDTO) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_UPDATED_SUCCESSFULLY, albumService.updateAlbum(idAlbum, albumDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 

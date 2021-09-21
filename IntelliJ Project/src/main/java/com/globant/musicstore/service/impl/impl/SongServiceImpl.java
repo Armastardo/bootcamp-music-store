@@ -27,19 +27,19 @@ public class SongServiceImpl implements SongService {
     SongDAO songDAO;
 
     @Override
-    public List<Song> showList() {
-        return songDAO.findAll();
+    public List<SongDTO> showList() {
+        return songMapper.listSongToDTO(songDAO.findAll());
     }
 
     @Override
-    public SongDTO addSong(Long id_album, SongDTO songDTO) {
-        albumService.getAlbumById(id_album);
+    public SongDTO addSong(Long idAlbum, SongDTO songDTO) {
+        albumService.getAlbumById(idAlbum);
         return songMapper.songEntityToDTO(songDAO.save(songMapper.songDTOToEntity(songDTO)));
     }
 
     @Override
-    public SongDTO getSongById(Long id_song) {
-        Song song = songDAO.findById(id_song).orElse(null);
+    public SongDTO getSongById(Long idSong) {
+        Song song = songDAO.findById(idSong).orElse(null);
 
         if(song == null){
             throw new NotFoundException(ITEM_DOES_NOT_EXIST);
@@ -51,8 +51,8 @@ public class SongServiceImpl implements SongService {
     @Override
     public void deleteSong(Long id_song) {
         SongDTO songDTO = getSongById(id_song);
-        if(songDTO.getIs_active() == true){
-            songDTO.setIs_active(false);
+        if(songDTO.getActive() == true){
+            songDTO.setActive(false);
             updateSong(id_song, songDTO);
         }else{
             throw new NotFoundException(ITEM_IS_ALREADY_DISABLE);
@@ -60,8 +60,8 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public SongDTO updateSong(Long id_song, SongDTO songDTO) {
-        getSongById(id_song);
+    public SongDTO updateSong(Long idSong, SongDTO songDTO) {
+        getSongById(idSong);
         return songMapper.songEntityToDTO(songDAO.save(songMapper.songDTOToEntity(songDTO)));
     }
 }
