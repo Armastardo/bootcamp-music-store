@@ -1,4 +1,4 @@
-package com.globant.musicstore.service.imp;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.ArtistDAO;
 import com.globant.musicstore.dao.HouseRecordDAO;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ArtistServiceImp implements ArtistService {
+public class ArtistServiceImpl implements ArtistService {
 
     @Autowired
     private ArtistDAO artistDAO;
