@@ -20,31 +20,31 @@ public class SongController {
     @Autowired
     SongService songService;
 
-    @PostMapping(path = "add/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO<SongDTO>> addSong(@PathVariable Long idAlbum, @RequestBody SongDTO songDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, songService.addSong(idAlbum, songDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping("delete/{idSong}")
+    @DeleteMapping("/{idSong}")
     public String deleteSong(@PathVariable Long idSong) {
         songService.deleteSong(idSong);
         return ITEM_DELETED_SUCCESSFULLY;
     }
 
-    @RequestMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO<SongDTO>> getSongById(@PathVariable Long idSong) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, songService.getSongById(idSong));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @RequestMapping(path = "/listSongs", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/listSongs", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO<SongDTO>> showList() {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, songService.showList());
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @PutMapping(path = "update/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO<SongDTO>> updateSong(@PathVariable Long idSong, @RequestBody SongDTO songDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_UPDATED_SUCCESSFULLY, songService.updateSong(idSong, songDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
