@@ -7,6 +7,7 @@ import com.globant.musicstore.entity.Artist;
 import com.globant.musicstore.entity.HouseRecord;
 import com.globant.musicstore.exception.InvalidDataException;
 import com.globant.musicstore.exception.ModelNotFoundException;
+import com.globant.musicstore.utils.constants.Constants;
 import com.globant.musicstore.utils.mapper.ArtistMapper;
 import com.globant.musicstore.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,13 @@ public class ArtistServiceImp implements ArtistService {
         return artistMapper.artistToDTO(artistDAO.save(artistMapper.artistDTOtoArtist(artistDataToUpdate)));
     }
 
+
+    public void validationInputFromUser(ArtistDTO artistDTO) {
+        if (artistDTO.getName().isEmpty() || artistDTO.getDescription().isEmpty() || artistDTO.getYearFrom() == null) {
+            throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
+        }
+    }
+
     @Override
     public ArtistDTO deleteArtistLogically(long artistId) {
         ArtistDTO getArtistById = getArtistById(artistId);
@@ -65,14 +73,8 @@ public class ArtistServiceImp implements ArtistService {
 
     @Override
     public ArtistDTO getArtistById(long artistId) {
-        Artist findArtistById = artistDAO.findById(artistId).orElseThrow(() -> new ModelNotFoundException("no existe"));
+        Artist findArtistById = artistDAO.findById(artistId).orElseThrow(() -> new ModelNotFoundException(Constants.RESPONSE_EXCEPTION_NOT_FOUND));
         return artistMapper.artistToDTO(findArtistById);
-    }
-
-    public void validationInputFromUser(ArtistDTO artistDTO) {
-        if (artistDTO.getName().isEmpty() || artistDTO.getDescription().isEmpty() || artistDTO.getYear_from() == null) {
-            throw new InvalidDataException("error en input");
-        }
     }
 
 }
