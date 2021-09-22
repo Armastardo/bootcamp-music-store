@@ -38,7 +38,7 @@ public class RepaymentController {
         return new ResponseEntity<>(repaymentResponseDTO, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("delete/{id_repayment}")
+    @DeleteMapping("/{id_repayment}")
     public ResponseEntity<ResponseDTO<RepaymentDTO>> deleteRepayment(@PathVariable Long repaymentId) {
         ResponseDTO repaymentResponseDTO  = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ID_FOUNDED_SUCCESSFULLY , repaymentService.deleteRepayment(repaymentId));
         return new ResponseEntity<>(repaymentResponseDTO, HttpStatus.OK);
