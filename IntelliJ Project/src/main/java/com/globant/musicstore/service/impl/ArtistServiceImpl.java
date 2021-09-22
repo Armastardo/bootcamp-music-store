@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ArtistServiceImpl implements ArtistService {
@@ -40,8 +41,9 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
-    public ArtistDTO updateArtist(long artistId, ArtistDTO artistDataToUpdate) {
-        ArtistDTO getArtistById = getArtistById(artistId);
+    public ArtistDTO updateArtist(ArtistDTO artistDataToUpdate) {
+        long artistId = artistDataToUpdate.getId();
+        getArtistById(artistId);
         validationInputFromUser(artistDataToUpdate);
         artistDataToUpdate.setId(artistId);
         return artistMapper.artistToDTO(artistDAO.save(artistMapper.artistDTOtoArtist(artistDataToUpdate)));
@@ -49,7 +51,7 @@ public class ArtistServiceImpl implements ArtistService {
 
 
     public void validationInputFromUser(ArtistDTO artistDTO) {
-        if (artistDTO.getName().isEmpty() || artistDTO.getDescription().isEmpty() || artistDTO.getYearFrom() == null) {
+        if (artistDTO.getName().isEmpty() || artistDTO.getDescription().isEmpty() || Objects.isNull(artistDTO.getYearFrom())) {
             throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
         }
     }

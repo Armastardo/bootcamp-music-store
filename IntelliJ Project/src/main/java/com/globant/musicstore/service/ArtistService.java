@@ -12,7 +12,7 @@ public interface ArtistService {
 
     ArtistDTO getArtistById(long artistId);
 
-    ArtistDTO updateArtist(long artistId, ArtistDTO artistDataToUpdate);
+    ArtistDTO updateArtist(ArtistDTO artistDataToUpdate);
 
     ArtistDTO deleteArtistLogically(long artistId);
 

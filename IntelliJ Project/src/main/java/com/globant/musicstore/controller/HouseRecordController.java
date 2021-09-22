@@ -44,10 +44,9 @@ public class HouseRecordController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO<HouseRecordDTO>> updateHouseRecord(@PathVariable("id") long houseRecordId,
-                                                                         @RequestBody HouseRecordDTO houseRecordDTO) {
-        ResponseDTO<HouseRecordDTO> response = new ResponseDTO<HouseRecordDTO>(Constants.RESPONSE_UPDATE_HOUSE_RECORD, houseRecordService.updateHouseRecord(houseRecordId, houseRecordDTO));
+    @PutMapping("/")
+    public ResponseEntity<ResponseDTO<HouseRecordDTO>> updateHouseRecord(@RequestBody HouseRecordDTO houseRecordDTO) {
+        ResponseDTO<HouseRecordDTO> response = new ResponseDTO<HouseRecordDTO>(Constants.RESPONSE_UPDATE_HOUSE_RECORD, houseRecordService.updateHouseRecord(houseRecordDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -34,8 +34,9 @@ public class CatGenreServiceImpl implements CatGenreService {
     }
 
     @Override
-    public CatGenreDTO updateGenre(long genreId, CatGenreDTO catGenreDTO) {
-        CatGenreDTO getGenreById = getGenreById(genreId);
+    public CatGenreDTO updateGenre(CatGenreDTO catGenreDTO) {
+        long genreId = catGenreDTO.getId();
+        getGenreById(genreId);
         validationInputFromUser(catGenreDTO);
         catGenreDTO.setId(genreId);
         return catGenreMapper.genreToDto(catGenreDAO.save(catGenreMapper.genreDTOToGenre(catGenreDTO)));

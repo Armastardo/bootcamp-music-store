@@ -43,10 +43,9 @@ public class CatGenreController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO<CatGenreDTO>> updateGenre(@PathVariable("id") long genreId,
-                                                                @RequestBody CatGenreDTO catGenreDTO) {
-        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_UPDATE_GENRE, catGenreService.updateGenre(genreId, catGenreDTO));
+    @PutMapping("/")
+    public ResponseEntity<ResponseDTO<CatGenreDTO>> updateGenre(@RequestBody CatGenreDTO catGenreDTO) {
+        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_UPDATE_GENRE, catGenreService.updateGenre(catGenreDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
