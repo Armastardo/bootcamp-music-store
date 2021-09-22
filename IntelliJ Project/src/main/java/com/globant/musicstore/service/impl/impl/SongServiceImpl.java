@@ -49,14 +49,15 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public void deleteSong(Long id_song) {
+    public SongDTO deleteSong(Long id_song) {
         SongDTO songDTO = getSongById(id_song);
-        if(songDTO.getActive() == true){
-            songDTO.setActive(false);
+        if(songDTO.getIsActive() == true){
+            songDTO.setIsActive(false);
             updateSong(id_song, songDTO);
         }else{
             throw new NotFoundException(ITEM_IS_ALREADY_DISABLE);
         }
+        return songDTO;
     }
 
     @Override

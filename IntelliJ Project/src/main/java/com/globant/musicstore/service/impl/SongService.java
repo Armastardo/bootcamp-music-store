@@ -8,6 +8,6 @@ public interface SongService {
     public List<SongDTO> showList();
     public SongDTO addSong(Long idAlbum, SongDTO songDTO);
     public SongDTO getSongById(Long idSong);
-    public void deleteSong(Long idSong);
+    public SongDTO deleteSong(Long idSong);
     public SongDTO updateSong(Long idSong, SongDTO songDTO);
 }

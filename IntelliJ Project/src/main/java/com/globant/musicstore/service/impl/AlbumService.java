@@ -10,6 +10,7 @@ public interface AlbumService {
     public AlbumDTO addAlbum(Long idArtist, AlbumDTO albumDTO);
     public AlbumDTO getAlbumById(Long idAlbum);
     public List<Song> getAlbumSongs(Long idAlbum);
-    public void deleteAlbum(Long idAlbum);
+    public AlbumDTO deleteAlbum(Long idAlbum);
     public AlbumDTO updateAlbum(Long idAlbum, AlbumDTO albumDTO);
+    public List<AlbumDTO> getAlbumByGenre(Long idCatGenre);
 }

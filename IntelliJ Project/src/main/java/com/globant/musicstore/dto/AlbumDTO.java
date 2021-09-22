@@ -16,7 +16,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 public class AlbumDTO {
 
     private Long id;
@@ -27,6 +26,6 @@ public class AlbumDTO {
     private Boolean isActive;
     private Integer quantityAvailable;
     private Long artistId;
-    private List<Song> songs;
+    private List<SongDTO> songs;
 
 }

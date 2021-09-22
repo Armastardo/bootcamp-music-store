@@ -19,16 +19,16 @@ public class AlbumController {
     @Autowired
     AlbumService albumService;
 
-    @PostMapping(path = "/{idArtist}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/{idArtist}")
     public ResponseEntity<ResponseDTO<AlbumDTO>> addAlbum(@PathVariable Long idArtist, @RequestBody AlbumDTO albumDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, albumService.addAlbum(idArtist, albumDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{idAlbum}")
-    public String deleteAlbum(@PathVariable Long idAlbum) {
-        albumService.deleteAlbum(idAlbum);
-        return ITEM_DELETED_SUCCESSFULLY;
+    public ResponseEntity<ResponseDTO<AlbumDTO>> deleteAlbum(@PathVariable Long idAlbum) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_DELETED_SUCCESSFULLY, albumService.deleteAlbum(idAlbum));
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)

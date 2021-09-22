@@ -14,6 +14,8 @@ public class AlbumMapper {
 
     @Autowired
     ArtistDAO artistDAO;
+    @Autowired
+    SongMapper songMapper;
 
     public Album albumDTOToEntity(AlbumDTO albumDTO){
         Album album = new Album();
@@ -24,7 +26,7 @@ public class AlbumMapper {
         album.setPrice(albumDTO.getPrice());
         album.setQuantityAvailable(albumDTO.getQuantityAvailable());
         album.setIsActive(albumDTO.getIsActive());
-        album.setSongs(albumDTO.getSongs());
+        album.setSongs(songMapper.listSongDTOToEntity(albumDTO.getSongs()));
         album.setArtist(artistDAO.getArtist(albumDTO.getArtistId()));
         return album;
     }
@@ -38,7 +40,7 @@ public class AlbumMapper {
         albumDTO.setPrice(album.getPrice());
         albumDTO.setQuantityAvailable(album.getQuantityAvailable());
         albumDTO.setIsActive(album.getIsActive());
-        albumDTO.setSongs(album.getSongs());
+        albumDTO.setSongs(songMapper.listSongToDTO(album.getSongs()));
         albumDTO.setArtistId(album.getArtist().getId());
         return albumDTO;
     }

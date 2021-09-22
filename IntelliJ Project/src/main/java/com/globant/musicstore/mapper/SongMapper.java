@@ -23,7 +23,7 @@ public class SongMapper {
         song.setId(songDTO.getId());
         song.setName(songDTO.getName());
         song.setDuration(songDTO.getDuration());
-        song.setActive((songDTO.getActive()));
+        song.setIsActive((songDTO.getIsActive()));
         song.setAlbum(albumDAO.getAlbum(songDTO.getAlbumId()));
         song.setCatGenre(catGenreDAO.getCatGenre(songDTO.getCatGenreId()));
         return song;
@@ -34,7 +34,7 @@ public class SongMapper {
         songDTO.setId(song.getId());
         songDTO.setName(song.getName());
         songDTO.setDuration(song.getDuration());
-        songDTO.setActive(song.getActive());
+        songDTO.setIsActive(song.getIsActive());
         songDTO.setAlbumId(song.getAlbum().getId());
         songDTO.setCatGenreId(song.getCatGenre().getId());
         return songDTO;
@@ -44,5 +44,11 @@ public class SongMapper {
         List<SongDTO> songDTOList = new ArrayList<SongDTO>();
         songList.forEach(song -> songDTOList.add(songEntityToDTO(song)));
         return songDTOList;
+    }
+
+    public List<Song> listSongDTOToEntity(List<SongDTO> songList){
+        List<Song> songEntityList = new ArrayList<Song>();
+        songList.forEach(song -> songEntityList.add(songDTOToEntity(song)));
+        return songEntityList;
     }
 }

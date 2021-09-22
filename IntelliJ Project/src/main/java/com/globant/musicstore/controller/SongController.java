@@ -20,7 +20,7 @@ public class SongController {
     @Autowired
     SongService songService;
 
-    @PostMapping(path = "/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/{idAlbum}")
     public ResponseEntity<ResponseDTO<SongDTO>> addSong(@PathVariable Long idAlbum, @RequestBody SongDTO songDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_ADDED_SUCCESSFULLY, songService.addSong(idAlbum, songDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
@@ -35,7 +35,7 @@ public class SongController {
     @GetMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO<SongDTO>> getSongById(@PathVariable Long idSong) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEMS_SHOWED_SUCCESSFULLY, songService.getSongById(idSong));
-        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping(path = "/listSongs", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,7 +44,7 @@ public class SongController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{idSong}")
     public ResponseEntity<ResponseDTO<SongDTO>> updateSong(@PathVariable Long idSong, @RequestBody SongDTO songDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_UPDATED_SUCCESSFULLY, songService.updateSong(idSong, songDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
