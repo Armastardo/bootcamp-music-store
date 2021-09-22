@@ -6,6 +6,7 @@ import com.globant.musicstore.entity.HouseRecord;
 import com.globant.musicstore.exception.InvalidDataException;
 import com.globant.musicstore.exception.ModelNotFoundException;
 import com.globant.musicstore.service.HouseRecordService;
+import com.globant.musicstore.utils.constants.Constants;
 import com.globant.musicstore.utils.mapper.HouseRecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,12 @@ public class HouseRecordServiceImpl implements HouseRecordService {
                                 .houseRecordDTOToHouseRecord(houseRecordDTO)));
     }
 
+    public void validationInputFromUser(HouseRecordDTO houseRecordDTO) {
+        if (houseRecordDTO.getName().isEmpty() || houseRecordDTO.getDescription().isEmpty() || houseRecordDTO.getYearFrom() == null) {
+            throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
+        }
+    }
+
     @Override
     public HouseRecordDTO deleteHouseRecordLogically(long houseRecordId) {
         HouseRecordDTO getHouseRecordById = getHouseRecordById(houseRecordId);
@@ -58,13 +65,8 @@ public class HouseRecordServiceImpl implements HouseRecordService {
 
     @Override
     public HouseRecordDTO getHouseRecordById(long houseRecordId) {
-        HouseRecord findHouseRecordById = houseRecordDAO.findById(houseRecordId).orElseThrow(() -> new ModelNotFoundException(("no existe")));
+        HouseRecord findHouseRecordById = houseRecordDAO.findById(houseRecordId).orElseThrow(() -> new ModelNotFoundException((Constants.RESPONSE_EXCEPTION_NOT_FOUND)));
         return houseRecordMapper.houseRecordToDTO(findHouseRecordById);
     }
 
-    public void validationInputFromUser(HouseRecordDTO houseRecordDTO) {
-        if (houseRecordDTO.getName().isEmpty() || houseRecordDTO.getDescription().isEmpty() || houseRecordDTO.getYear_from() == null) {
-            throw new InvalidDataException("error input");
-        }
-    }
 }
