@@ -43,6 +43,7 @@ public class HouseRecordServiceImpl implements HouseRecordService {
         long houseRecordId = houseRecordDTO.getId();
         getHouseRecordById(houseRecordId);
         validationInputFromUser(houseRecordDTO);
+      
         return houseRecordMapper
                 .houseRecordToDTO(houseRecordDAO
                         .save(houseRecordMapper
@@ -51,6 +52,7 @@ public class HouseRecordServiceImpl implements HouseRecordService {
 
     public void validationInputFromUser(HouseRecordDTO houseRecordDTO) {
         if (houseRecordDTO.getName().isEmpty() || houseRecordDTO.getDescription().isEmpty() || Objects.isNull(houseRecordDTO.getYearFrom())) {
+
             throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
         }
     }
