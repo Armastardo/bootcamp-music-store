@@ -1,10 +1,12 @@
-package com.globant.musicstore.mapper;
+package com.globant.musicstore.utils.mapper;
 
-import com.globant.musicstore.dto.Album;
+import com.globant.musicstore.dto.AlbumDTO;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
 import com.globant.musicstore.entity.Invoice;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IntInvoiceAlbumDTOMapper {
 	
 	public IntInvoiceAlbum IntInvoiceAlbumDTOToEntity(IntInvoiceAlbumDTO intInvoiceAlbumDTO  ) {
@@ -13,7 +15,7 @@ public class IntInvoiceAlbumDTOMapper {
 				.intInvoiceAlbumId(intInvoiceAlbumDTO.getIntInvoiceAlbumId())
 				.invoiceId(intInvoiceAlbumDTO.getInvoiceId())
 				.albumId(intInvoiceAlbumDTO.getAlbumId())
-				.album_quantity(intInvoiceAlbumDTO.getAlbumQuantity())
+				.albumQuantity(intInvoiceAlbumDTO.getAlbumQuantity())
 				.isActive(intInvoiceAlbumDTO.getIsActive())
 				.build();
 

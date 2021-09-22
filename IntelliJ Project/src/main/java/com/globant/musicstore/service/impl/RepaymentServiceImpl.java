@@ -3,7 +3,7 @@ package com.globant.musicstore.service.impl;
 import com.globant.musicstore.dao.RepaymentDAO;
 import com.globant.musicstore.dto.RepaymentDTO;
 import com.globant.musicstore.exception.InvalidDataException;
-import com.globant.musicstore.mapper.RepaymentMapper;
+import com.globant.musicstore.utils.mapper.RepaymentMapper;
 import com.globant.musicstore.service.RepaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

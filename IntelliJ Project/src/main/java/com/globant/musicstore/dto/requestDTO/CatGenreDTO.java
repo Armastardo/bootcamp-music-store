@@ -14,7 +14,7 @@ public class CatGenreDTO {
     private long id;
     private String name;
     private String description;
-    private boolean isActive = true;
+    private boolean isActive;
 
     public CatGenreDTO() {
     }

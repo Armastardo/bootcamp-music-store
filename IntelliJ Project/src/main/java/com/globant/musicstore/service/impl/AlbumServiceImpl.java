@@ -1,14 +1,14 @@
-package com.globant.musicstore.service.impl.impl;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.AlbumDAO;
 import com.globant.musicstore.dto.AlbumDTO;
 import com.globant.musicstore.entity.Album;
 import com.globant.musicstore.entity.Song;
 import com.globant.musicstore.exception.NotFoundException;
-import com.globant.musicstore.mapper.AlbumMapper;
-import com.globant.musicstore.mapper.SongMapper;
-import com.globant.musicstore.service.impl.AlbumService;
-import com.globant.musicstore.service.impl.ArtistService;
+import com.globant.musicstore.utils.mapper.AlbumMapper;
+import com.globant.musicstore.utils.mapper.SongMapper;
+import com.globant.musicstore.service.AlbumService;
+import com.globant.musicstore.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

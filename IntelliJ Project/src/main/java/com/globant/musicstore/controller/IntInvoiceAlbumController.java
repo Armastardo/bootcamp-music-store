@@ -27,7 +27,7 @@ import com.globant.musicstore.utils.IntInvoiceAlbumConstants.ResponseConstants;
 public class IntInvoiceAlbumController {
 
 	@Autowired
-	IntInvoiceAlbumService intInvoiceAlbumService;
+	private IntInvoiceAlbumService intInvoiceAlbumService;
 	
 	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<IntInvoiceAlbumResponseDTO<IntInvoiceAlbumDTO>> createIntInvoiceAlbum(@RequestBody IntInvoiceAlbumDTO intInvoiceAlbumDTO){
@@ -37,9 +37,9 @@ public class IntInvoiceAlbumController {
 	}
 
 	@GetMapping(path = "/{intInvoiceAlbumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<IntInvoiceAlbumResponseDTO<IntInvoiceAlbumDTO>> getIntInvoiceAlbum(@PathVariable Integer invoiceId){
+	public ResponseEntity<IntInvoiceAlbumResponseDTO<IntInvoiceAlbumDTO>> getIntInvoiceAlbum(@PathVariable Long intInvoiceAlbumId){
 		
-		IntInvoiceAlbumResponseDTO intInvoiceAlbumResponseDTO = new IntInvoiceAlbumResponseDTO(INTINVOICEALBUM_FOUNDED_SUCCESSFULLY, intInvoiceAlbumService.getIntInvoiceAlbum(invoiceId));
+		IntInvoiceAlbumResponseDTO intInvoiceAlbumResponseDTO = new IntInvoiceAlbumResponseDTO(INTINVOICEALBUM_FOUNDED_SUCCESSFULLY, intInvoiceAlbumService.getIntInvoiceAlbum(intInvoiceAlbumId));
 		return new ResponseEntity<>(intInvoiceAlbumResponseDTO, HttpStatus.ACCEPTED);
 	}
 	
@@ -51,7 +51,7 @@ public class IntInvoiceAlbumController {
 	}
 		
 	@PutMapping(path = "/{invoiceId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<IntInvoiceAlbumResponseDTO<IntInvoiceAlbumDTO>> deleteIntInvoiceAlbum(@RequestBody Integer intInvoiceAlbumDTO) {
+	public ResponseEntity<IntInvoiceAlbumResponseDTO<IntInvoiceAlbumDTO>> deleteIntInvoiceAlbum(@RequestBody Long intInvoiceAlbumDTO) {
 		
 		IntInvoiceAlbumResponseDTO intInvoiceAlbumResponseDTO  = new IntInvoiceAlbumResponseDTO(INTINVOICEALBUM_DELETED_SUCCESSFULLY , intInvoiceAlbumService.deleteIntInvoiceAlbum(intInvoiceAlbumDTO));
 		return new ResponseEntity<>(intInvoiceAlbumResponseDTO, HttpStatus.OK);

@@ -1,4 +1,4 @@
-package com.globant.musicstore.mapper;
+package com.globant.musicstore.utils.mapper;
 
 import com.globant.musicstore.dto.Cat_GenreDTO;
 import com.globant.musicstore.entity.Cat_Genre;

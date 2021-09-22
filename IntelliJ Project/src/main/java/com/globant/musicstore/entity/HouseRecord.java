@@ -40,7 +40,7 @@ public class HouseRecord {
     @Column(name = "description", nullable = false)
     private String description;
     @Column(name = "is_active", nullable = false)
-    private boolean isActive = true;
+    private boolean isActive;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "houseRecord", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("houseRecord")

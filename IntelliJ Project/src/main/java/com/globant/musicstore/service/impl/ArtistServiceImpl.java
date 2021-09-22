@@ -7,9 +7,9 @@ import com.globant.musicstore.entity.Artist;
 import com.globant.musicstore.entity.HouseRecord;
 import com.globant.musicstore.exception.InvalidDataException;
 import com.globant.musicstore.exception.ModelNotFoundException;
+import com.globant.musicstore.service.ArtistService;
 import com.globant.musicstore.utils.constants.Constants;
 import com.globant.musicstore.utils.mapper.ArtistMapper;
-import com.globant.musicstore.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

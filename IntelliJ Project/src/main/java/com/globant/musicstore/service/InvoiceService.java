@@ -4,13 +4,12 @@ import com.globant.musicstore.dto.requestDTO.InvoiceDTO;
 
 public interface InvoiceService {
 
-
 	InvoiceDTO createInvoice (InvoiceDTO invoiceDTO);
 	
-	InvoiceDTO getInvoice (Integer invoiceId);
+	InvoiceDTO getInvoice (Long invoiceId);
 	
 	InvoiceDTO updateInvoice (InvoiceDTO invoiceDTO);
 	
-	InvoiceDTO deleteInvoice (Integer invoiceId);
+	InvoiceDTO deleteInvoice (Long invoiceId);
 	
 }

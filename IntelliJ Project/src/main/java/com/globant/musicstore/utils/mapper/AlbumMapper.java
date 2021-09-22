@@ -1,4 +1,4 @@
-package com.globant.musicstore.mapper;
+package com.globant.musicstore.utils.mapper;
 
 import com.globant.musicstore.dao.ArtistDAO;
 import com.globant.musicstore.dto.AlbumDTO;

@@ -18,7 +18,7 @@ public class HouseRecordDTO {
     private String name;
     private Date yearFrom;
     private String description;
-    private boolean isActive = true;
+    private boolean isActive;
     private Set<Artist> artists;
 
     public HouseRecordDTO() {
