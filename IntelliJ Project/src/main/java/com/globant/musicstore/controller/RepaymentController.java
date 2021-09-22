@@ -25,7 +25,7 @@ import static com.globant.musicstore.utils.Constants.ITEM_UPDATED_SUCCESSFULLY;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/repayment/")
 public class RepaymentController {
 
     @Autowired

@@ -39,7 +39,7 @@ public class Repayment {
     private Invoice invoice;
 
     @ManyToOne
-    @JoinColumn(name = "cat_repayment_type_id", referencedColumnName = "cat_repayment_type_id")
+    @JoinColumn(name = "cat_repayment_id", referencedColumnName = "cat_repayment_type_id")
     private CatRepaymentType catRepayment;
 
     @Column(name = "album_id")
