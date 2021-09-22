@@ -24,11 +24,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class IntInvoiceAlbumDTO {
 
-	private Integer int_invoice_album_id ;	
-	private Invoice invoice_id;	
-	private Album album_id;	
-	private Integer album_quantity;	
-	private Boolean is_active;
+	private Integer intInvoiceAlbumId ;	
+	private Invoice invoiceId;	
+	private Album albumId;	
+	private Integer albumQuantity;	
+	private Boolean isActive;
 	
 	public IntInvoiceAlbumDTO() {
 		

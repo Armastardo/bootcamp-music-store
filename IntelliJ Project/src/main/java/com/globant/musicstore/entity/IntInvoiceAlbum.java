@@ -27,20 +27,20 @@ public class IntInvoiceAlbum {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "int_invoice_album_id ")
-	private Integer int_invoice_album_id ;
+	private Integer intInvoiceAlbumId ;
 	
 	@ManyToOne
 	@JoinColumn(name = "invoice_id")
-	private Invoice invoice_id;
+	private Invoice invoiceId;
 	
 	@ManyToOne
 	@JoinColumn(name = "id")
-	private Album album_id;
+	private Album albumId;
 	
 	@Column(name = "album_quantity")
-	private Integer album_quantity;
+	private Integer albumQuantity;
 	
 	@Column(name = "is_active")
-	private Boolean is_active;
+	private Boolean isActive;
 
 }

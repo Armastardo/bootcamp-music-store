@@ -16,11 +16,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class InvoiceDTO {
 	
-	private Integer invoice_id ;
-	private Client client_id;
-	private Date invoice_date;
-	private Double total_amount;
-	private Boolean is_active;
+	private Integer invoiceId ;
+	private Client clientId;
+	private Date invoiceDate;
+	private Double totalAmount;
+	private Boolean isActive;
 	
 	public InvoiceDTO() {
 		

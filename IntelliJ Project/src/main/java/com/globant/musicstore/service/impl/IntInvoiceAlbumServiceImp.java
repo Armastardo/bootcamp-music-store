@@ -1,4 +1,4 @@
-package com.globant.musicstore.service;
+package com.globant.musicstore.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,6 +7,7 @@ import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
 import com.globant.musicstore.entity.Invoice;
 import com.globant.musicstore.mapper.IntInvoiceAlbumDTOMapper;
+import com.globant.musicstore.service.IntInvoiceAlbumService;
 
 public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 
@@ -19,7 +20,7 @@ public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 	@Override
 	public IntInvoiceAlbumDTO createIntInvoiceAlbum(IntInvoiceAlbumDTO intInvoiceAlbumDTO) {
 		
-		intInvoiceAlbumDTO.setIs_active(Boolean.TRUE);
+		intInvoiceAlbumDTO.setIsActive(Boolean.TRUE);
 		return intInvoiceAlbumDTOMapper.EntityToIntInvoiceAlbumDTO(intInvoiceAlbumDAO.save(intInvoiceAlbumDTOMapper.IntInvoiceAlbumDTOToEntity(intInvoiceAlbumDTO)));
 				
 	}
@@ -40,7 +41,7 @@ public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 		
 		IntInvoiceAlbum intInvoiceToBeDisabled = new IntInvoiceAlbum();
 		intInvoiceToBeDisabled = intInvoiceAlbumDAO.getById(intInvoiceAlbumId);
-		intInvoiceToBeDisabled.setIs_active(Boolean.FALSE);		
+		intInvoiceToBeDisabled.setIsActive(Boolean.FALSE);		
 		
 		return intInvoiceAlbumDTOMapper.EntityToIntInvoiceAlbumDTO(intInvoiceAlbumDAO.save(intInvoiceToBeDisabled));
 	}

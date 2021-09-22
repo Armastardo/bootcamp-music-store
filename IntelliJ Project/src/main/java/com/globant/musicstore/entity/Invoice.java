@@ -33,19 +33,19 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "invoice_id ")
-	private Integer invoice_id ;
+	private Integer invoiceId ;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id ")
-	private Client client_id;
+	private Client clientId;
 	
 	@Column(name = "invoice_date")
-	private Date invoice_date;
+	private Date invoiceDate;
 	
 	@Column(name = "total_amount")
-	private Double total_amount;
+	private Double totalAmount;
 	
 	@Column(name = "is_active")
-	private Boolean is_active;
+	private Boolean isActive;
 	
 }

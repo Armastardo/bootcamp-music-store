@@ -10,11 +10,11 @@ public class IntInvoiceAlbumDTOMapper {
 	public IntInvoiceAlbum IntInvoiceAlbumDTOToEntity(IntInvoiceAlbumDTO intInvoiceAlbumDTO  ) {
 		
 		IntInvoiceAlbum intInvoiceAlbum = IntInvoiceAlbum.builder()
-				.int_invoice_album_id(intInvoiceAlbumDTO.getInt_invoice_album_id())
-				.invoice_id(intInvoiceAlbumDTO.getInvoice_id())
-				.album_id(intInvoiceAlbumDTO.getAlbum_id())
-				.album_quantity(intInvoiceAlbumDTO.getAlbum_quantity())
-				.is_active(intInvoiceAlbumDTO.getIs_active())
+				.intInvoiceAlbumId(intInvoiceAlbumDTO.getIntInvoiceAlbumId())
+				.invoiceId(intInvoiceAlbumDTO.getInvoiceId())
+				.albumId(intInvoiceAlbumDTO.getAlbumId())
+				.album_quantity(intInvoiceAlbumDTO.getAlbumQuantity())
+				.isActive(intInvoiceAlbumDTO.getIsActive())
 				.build();
 
 		return intInvoiceAlbum;
@@ -24,11 +24,11 @@ public class IntInvoiceAlbumDTOMapper {
 	public  IntInvoiceAlbumDTO EntityToIntInvoiceAlbumDTO (IntInvoiceAlbum intInvoiceAlbum  ) {
 		
 		IntInvoiceAlbumDTO intInvoiceAlbumDTO = IntInvoiceAlbumDTO.builder()
-				.int_invoice_album_id(intInvoiceAlbum.getInt_invoice_album_id())
-				.invoice_id(intInvoiceAlbum.getInvoice_id())
-				.album_id(intInvoiceAlbum.getAlbum_id())
-				.album_quantity(intInvoiceAlbum.getAlbum_quantity())
-				.is_active(intInvoiceAlbum.getIs_active())
+				.intInvoiceAlbumId(intInvoiceAlbum.getIntInvoiceAlbumId())
+				.invoiceId(intInvoiceAlbum.getInvoiceId())
+				.albumId(intInvoiceAlbum.getAlbumId())
+				.albumQuantity(intInvoiceAlbum.getAlbumQuantity())
+				.isActive(intInvoiceAlbum.getIsActive())
 				.build();
 				
 		return intInvoiceAlbumDTO;

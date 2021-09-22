@@ -1,4 +1,4 @@
-package com.globant.musicstore.service;
+package com.globant.musicstore.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -6,6 +6,7 @@ import com.globant.musicstore.dao.InvoiceDAO;
 import com.globant.musicstore.dto.requestDTO.InvoiceDTO;
 import com.globant.musicstore.entity.Invoice;
 import com.globant.musicstore.mapper.InvoiceMapper;
+import com.globant.musicstore.service.InvoiceService;
 
 public class InvoiceServiceImp implements InvoiceService{
 
@@ -18,7 +19,7 @@ public class InvoiceServiceImp implements InvoiceService{
 	@Override
 	public InvoiceDTO createInvoice(InvoiceDTO invoiceDTO) {
 		
-		invoiceDTO.setIs_active(Boolean.TRUE);
+		invoiceDTO.setIsActive(Boolean.TRUE);
 		return invoiceMapper.EntityToInvoiceDTO(invoiceDAO.save(invoiceMapper.InvoiceDTOToEntity(invoiceDTO)));
 				
 	}
@@ -41,7 +42,7 @@ public class InvoiceServiceImp implements InvoiceService{
 
 		Invoice invoiceToBeDisabled = new Invoice();
 		invoiceToBeDisabled = invoiceDAO.getById(invoiceId);
-		invoiceToBeDisabled.setIs_active(Boolean.FALSE);		
+		invoiceToBeDisabled.setIsActive(Boolean.FALSE);		
 		
 		return invoiceMapper.EntityToInvoiceDTO(invoiceDAO.save(invoiceToBeDisabled));
 		
