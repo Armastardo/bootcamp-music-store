@@ -3,6 +3,7 @@ package com.globant.musicstore.controller;
 import com.globant.musicstore.dto.requestDTO.CatGenreDTO;
 import com.globant.musicstore.dto.responseDTO.ResponseDTO;
 import com.globant.musicstore.service.CatGenreService;
+import com.globant.musicstore.utils.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,32 +27,31 @@ public class CatGenreController {
 
     @GetMapping("/")
     public ResponseEntity<ResponseDTO<List<CatGenreDTO>>> getAllGenres() {
-        ResponseDTO<List<CatGenreDTO>> response = new ResponseDTO<List<CatGenreDTO>>("ok", catGenreService.getAllGenres());
+        ResponseDTO<List<CatGenreDTO>> response = new ResponseDTO<List<CatGenreDTO>>(Constants.RESPONSE_GET_GENRES, catGenreService.getAllGenres());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/")
     public ResponseEntity<ResponseDTO<CatGenreDTO>> save(@RequestBody CatGenreDTO catGenreDTO) {
-        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>("ok", catGenreService.saveGenre(catGenreDTO));
+        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_SAVE_GENRE, catGenreService.saveGenre(catGenreDTO));
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO<CatGenreDTO>> getGenreById(@PathVariable("id") long genreId) {
-        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>("ok", catGenreService.getGenreById(genreId));
+        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_GET_GENRE_BY_ID, catGenreService.getGenreById(genreId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO<CatGenreDTO>> updateGenre(@PathVariable("id") long genreId,
-                                                                @RequestBody CatGenreDTO catGenreDTO) {
-        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>("ok", catGenreService.updateGenre(genreId, catGenreDTO));
+    @PutMapping("/")
+    public ResponseEntity<ResponseDTO<CatGenreDTO>> updateGenre(@RequestBody CatGenreDTO catGenreDTO) {
+        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_UPDATE_GENRE, catGenreService.updateGenre(catGenreDTO));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDTO<CatGenreDTO>> deleteGenre(@PathVariable("id") long genreId) {
-        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>("ok", catGenreService.deleteGenreLogically(genreId));
+        ResponseDTO<CatGenreDTO> response = new ResponseDTO<CatGenreDTO>(Constants.RESPONSE_DELETE_GENRE, catGenreService.deleteGenreLogically(genreId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

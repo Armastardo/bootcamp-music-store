@@ -1,4 +1,4 @@
-package com.globant.musicstore.service.imp;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.CatGenreDAO;
 import com.globant.musicstore.dto.requestDTO.CatGenreDTO;
@@ -6,6 +6,7 @@ import com.globant.musicstore.entity.CatGenre;
 import com.globant.musicstore.exception.InvalidDataException;
 import com.globant.musicstore.exception.ModelNotFoundException;
 import com.globant.musicstore.service.CatGenreService;
+import com.globant.musicstore.utils.constants.Constants;
 import com.globant.musicstore.utils.mapper.CatGenreMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CatGenreServiceImp implements CatGenreService {
+public class CatGenreServiceImpl implements CatGenreService {
 
     @Autowired
     private CatGenreDAO catGenreDAO;
@@ -33,11 +34,18 @@ public class CatGenreServiceImp implements CatGenreService {
     }
 
     @Override
-    public CatGenreDTO updateGenre(long genreId, CatGenreDTO catGenreDTO) {
-        CatGenreDTO getGenreById = getGenreById(genreId);
+    public CatGenreDTO updateGenre(CatGenreDTO catGenreDTO) {
+        long genreId = catGenreDTO.getId();
+        getGenreById(genreId);
         validationInputFromUser(catGenreDTO);
         catGenreDTO.setId(genreId);
         return catGenreMapper.genreToDto(catGenreDAO.save(catGenreMapper.genreDTOToGenre(catGenreDTO)));
+    }
+
+    public void validationInputFromUser(CatGenreDTO catGenreDTO) {
+        if (catGenreDTO.getName().isEmpty() || catGenreDTO.getDescription().isEmpty()) {
+            throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
+        }
     }
 
     @Override
@@ -50,13 +58,8 @@ public class CatGenreServiceImp implements CatGenreService {
 
     @Override
     public CatGenreDTO getGenreById(long catGenreId) {
-        CatGenre findGenreById = catGenreDAO.findById(catGenreId).orElseThrow(() -> new ModelNotFoundException("no existe"));
+        CatGenre findGenreById = catGenreDAO.findById(catGenreId).orElseThrow(() -> new ModelNotFoundException(Constants.RESPONSE_EXCEPTION_NOT_FOUND));
         return catGenreMapper.genreToDto(findGenreById);
     }
 
-    public void validationInputFromUser(CatGenreDTO catGenreDTO) {
-        if (catGenreDTO.getName().isEmpty() || catGenreDTO.getDescription().isEmpty()) {
-            throw new InvalidDataException("error input");
-        }
-    }
 }

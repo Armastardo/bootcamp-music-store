@@ -18,6 +18,12 @@ public class Constants {
 
     public static final String CLIENT_ADDED_SUCCESSFULLY = "The client was added successfully";
     public static final String CLIENT_RETRIEVED_SUCCESSFULLY = "The client was retrieved successfully";
+    public static final String ID_FOUNDED_SUCCESSFULLY = " The invoice was founded successfully";
+    public static final String REPAYMENT_DELETED= "Repayment already deleted";
+    public static final String ITEM_UPDATED_SUCCESSFULLY="ITEM_UPDATED_SUCCESSFULLY";
+    public static final String ITEM_ADDED_SUCCESSFULLY= "ITEM_ADDED_SUCCESSFULLY";
+    public static final String ITEM_ALREADY_DELETED="ITEM_ALREADY_DELETED";
+    public static final String ITEM_IS_NOT_LOCATED=" ITEM_IS_NOT_LOCATED";
     public static final String ITEM_ADDED_SUCCESSFULLY = "Item added successfully";
     public static final String ITEM_DELETED_SUCCESSFULLY = "Item disable succesfully";
     public static final String ITEM_UPDATED_SUCCESSFULLY = "Item updated succesfully";

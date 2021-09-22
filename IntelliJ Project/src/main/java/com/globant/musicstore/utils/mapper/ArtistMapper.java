@@ -11,29 +11,27 @@ import java.util.List;
 public class ArtistMapper {
 
     public ArtistDTO artistToDTO(Artist artistEntity) {
-        ArtistDTO artistDTO = ArtistDTO.builder()
+        return ArtistDTO.builder()
                 .id(artistEntity.getId())
                 .name(artistEntity.getName())
-                .year_from(artistEntity.getYear_from())
+                .yearFrom(artistEntity.getYearFrom())
                 .isSingle(artistEntity.isSingle())
                 .description(artistEntity.getDescription())
                 .isActive(artistEntity.isActive())
                 .houseRecord(artistEntity.getHouseRecord())
                 .build();
-        return artistDTO;
     }
 
     public Artist artistDTOtoArtist(ArtistDTO artistDTO) {
-        Artist artistEntity = Artist.builder()
+        return Artist.builder()
                 .id(artistDTO.getId())
                 .name(artistDTO.getName())
-                .year_from(artistDTO.getYear_from())
+                .yearFrom(artistDTO.getYearFrom())
                 .isSingle(artistDTO.isSingle())
                 .description(artistDTO.getDescription())
                 .isActive(artistDTO.isActive())
                 .houseRecord(artistDTO.getHouseRecord())
                 .build();
-        return artistEntity;
     }
 
     public List<ArtistDTO> listArtistToDTO(List<Artist> artistList) {

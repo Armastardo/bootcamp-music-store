@@ -1,5 +1,6 @@
 package com.globant.musicstore.controller;
 
+import com.globant.musicstore.dto.AlbumDTO;
 import com.globant.musicstore.dto.ResponseDTO;
 import com.globant.musicstore.dto.SongDTO;
 import com.globant.musicstore.service.impl.SongService;
@@ -27,9 +28,9 @@ public class SongController {
     }
 
     @DeleteMapping("/{idSong}")
-    public String deleteSong(@PathVariable Long idSong) {
-        songService.deleteSong(idSong);
-        return ITEM_DELETED_SUCCESSFULLY;
+    public ResponseEntity<ResponseDTO<SongDTO>> deleteSong(@PathVariable Long idSong) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_DELETED_SUCCESSFULLY, songService.deleteSong(idSong));
+        return new ResponseEntity<>(responseDTO, HttpStatus.NO_CONTENT);
     }
 
     @GetMapping(path = "/{idSong}", produces = MediaType.APPLICATION_JSON_VALUE)

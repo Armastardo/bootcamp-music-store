@@ -16,7 +16,7 @@ public class ArtistDTO {
 
     private long id;
     private String name;
-    private Date year_from;
+    private Date yearFrom;
     private boolean isSingle;
     private String description;
     private boolean isActive = true;

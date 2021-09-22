@@ -28,7 +28,7 @@ public class AlbumController {
     @DeleteMapping("/{idAlbum}")
     public ResponseEntity<ResponseDTO<AlbumDTO>> deleteAlbum(@PathVariable Long idAlbum) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, ITEM_DELETED_SUCCESSFULLY, albumService.deleteAlbum(idAlbum));
-        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.NO_CONTENT);
     }
 
     @GetMapping(path = "/{idAlbum}", produces = MediaType.APPLICATION_JSON_VALUE)
