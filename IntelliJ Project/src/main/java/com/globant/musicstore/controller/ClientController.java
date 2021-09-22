@@ -20,23 +20,30 @@ import static com.globant.musicstore.utils.Constants.CLIENT_ADDED_SUCCESSFULLY;
 import static com.globant.musicstore.utils.Constants.CLIENT_RETRIEVED_SUCCESSFULLY;
 
 @RestController
-@RequestMapping("musicstore")
-public class StoreController {
+@RequestMapping("/api/clients")
+public class ClientController {
 
     @Autowired
     private ClientService clientService;
 
-    @PostMapping(path = "/addClient", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<ResponseDTO<ClientDTO>> createClient(@RequestBody ClientDTO clientDTO) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, CLIENT_ADDED_SUCCESSFULLY, clientService.createClient(clientDTO));
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<ResponseDTO<ClientDTO>> getClient(@PathVariable Long id) {
+    public ResponseEntity<ResponseDTO<ClientDTO>> getClientById(@PathVariable Long id) {
         ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, CLIENT_RETRIEVED_SUCCESSFULLY, clientService.getClient(id));
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<ResponseDTO<ClientDTO>> getAllClients(@PathVariable Long id) {
+        ResponseDTO responseDTO = new ResponseDTO(Constants.ResponseConstants.SUCCESS, CLIENT_RETRIEVED_SUCCESSFULLY, clientService.getAllClients());
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 }

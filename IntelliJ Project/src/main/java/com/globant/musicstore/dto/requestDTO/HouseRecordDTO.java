@@ -1,7 +1,10 @@
 package com.globant.musicstore.dto.requestDTO;
 
 import com.globant.musicstore.entity.Artist;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import java.sql.Date;
 import java.util.Set;
@@ -13,7 +16,7 @@ import java.util.Set;
 public class HouseRecordDTO {
     private long id;
     private String name;
-    private Date year_from;
+    private Date yearFrom;
     private String description;
     private boolean isActive = true;
     private Set<Artist> artists;
