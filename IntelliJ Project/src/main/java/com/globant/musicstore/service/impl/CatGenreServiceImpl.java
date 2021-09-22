@@ -1,4 +1,4 @@
-package com.globant.musicstore.service.imp;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.CatGenreDAO;
 import com.globant.musicstore.dto.requestDTO.CatGenreDTO;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CatGenreServiceImp implements CatGenreService {
+public class CatGenreServiceImpl implements CatGenreService {
 
     @Autowired
     private CatGenreDAO catGenreDAO;

@@ -1,4 +1,4 @@
-package com.globant.musicstore.mapper;
+package com.globant.musicstore.utils.mapper;
 
 import com.globant.musicstore.dao.ClientDAO;
 import com.globant.musicstore.dao.ClientTypeDAO;
@@ -6,6 +6,9 @@ import com.globant.musicstore.dto.ClientDTO;
 import com.globant.musicstore.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ClientMapper {
@@ -40,5 +43,11 @@ public class ClientMapper {
                 .isActive(client.getIsActive())
                 .build();
         return clientDTO;
+    }
+
+    public List<ClientDTO> clientEntityListToDTOList(List<Client> clientList) {
+        List<ClientDTO> clientDTOList = new ArrayList<>();
+        clientList.forEach(client -> clientDTOList.add(clientEntityToDTO(client)));
+        return clientDTOList;
     }
 }

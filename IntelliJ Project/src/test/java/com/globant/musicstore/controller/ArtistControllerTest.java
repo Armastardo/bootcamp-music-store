@@ -3,7 +3,7 @@ package com.globant.musicstore.controller;
 import com.globant.musicstore.dto.requestDTO.ArtistDTO;
 import com.globant.musicstore.dto.responseDTO.ResponseDTO;
 import com.globant.musicstore.entity.Artist;
-import com.globant.musicstore.service.imp.ArtistServiceImp;
+import com.globant.musicstore.service.impl.ArtistServiceImpl;
 import com.globant.musicstore.utils.mapper.data.CreateArtist;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ public class ArtistControllerTest {
     private ArtistController artistController;
 
     @Mock
-    private ArtistServiceImp artistService;
+    private ArtistServiceImpl artistService;
 
     @Test
     public void testController_WhenWeCallGetById_Ok(){
