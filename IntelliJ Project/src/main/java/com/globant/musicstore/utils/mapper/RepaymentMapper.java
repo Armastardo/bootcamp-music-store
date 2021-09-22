@@ -1,6 +1,7 @@
 package com.globant.musicstore.utils.mapper;
 
 
+import com.globant.musicstore.dao.CatRepaymentTypeDAO;
 import com.globant.musicstore.dao.InvoiceDAO;
 import com.globant.musicstore.dao.RepaymentDAO;
 import com.globant.musicstore.dto.RepaymentDTO;
@@ -15,6 +16,9 @@ public class RepaymentMapper {
     private RepaymentDAO repaymentDAO;
 
     @Autowired
+    private CatRepaymentTypeDAO catRepaymentTypeDAO;
+
+    @Autowired
     private InvoiceDAO invoiceDAO;
 
     public RepaymentDTO repaymentEntityToDTO(Repayment repayment) {
@@ -22,6 +26,7 @@ public class RepaymentMapper {
                 .id(repayment.getId())
                 .date(repayment.getDate())
                 .invoiceId(repayment.getInvoice().getInvoiceId())
+                .catRepaymentId(repayment.getCatRepayment().getCatRepaymentTypeId())
                 .albumId(repayment.getAlbumId())
                 .quantity(repayment.getQuantity())
                 .isActive(repayment.getIsActive())
@@ -33,6 +38,7 @@ public class RepaymentMapper {
                 .id(repaymentDTO.getId())
                 .date(repaymentDTO.getDate())
                 .invoice(invoiceDAO.getById(repaymentDTO.getInvoiceId()))
+                .catRepayment(catRepaymentTypeDAO.getById(repaymentDTO.getCatRepaymentId()))
                 .albumId(repaymentDTO.getAlbumId())
                 .quantity(repaymentDTO.getQuantity())
                 .isActive(repaymentDTO.getIsActive())

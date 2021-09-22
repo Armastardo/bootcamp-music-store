@@ -1,7 +1,7 @@
 package com.globant.musicstore.utils.mapper;
 
 import com.globant.musicstore.dao.AlbumDAO;
-import com.globant.musicstore.dao.Cat_GenreDAO;
+import com.globant.musicstore.dao.CatGenreDAO;
 import com.globant.musicstore.dto.SongDTO;
 import com.globant.musicstore.entity.Song;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class SongMapper {
     AlbumDAO albumDAO;
 
     @Autowired
-    Cat_GenreDAO catGenreDAO;
+    CatGenreDAO catGenreDAO;
 
     public Song songDTOToEntity(SongDTO songDTO){
         Song song = new Song();
