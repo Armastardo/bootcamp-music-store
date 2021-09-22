@@ -12,7 +12,7 @@ public interface HouseRecordService {
 
     HouseRecordDTO getHouseRecordById(long houseRecordId);
 
-    HouseRecordDTO updateHouseRecord(long houseRecordId, HouseRecordDTO houseRecordDTO);
+    HouseRecordDTO updateHouseRecord(HouseRecordDTO houseRecordDTO);
 
     HouseRecordDTO deleteHouseRecordLogically(long houseRecordId);
 }

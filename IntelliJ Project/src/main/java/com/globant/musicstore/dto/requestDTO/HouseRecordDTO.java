@@ -1,7 +1,10 @@
 package com.globant.musicstore.dto.requestDTO;
 
 import com.globant.musicstore.entity.Artist;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import java.sql.Date;
 import java.util.Set;

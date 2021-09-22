@@ -12,7 +12,7 @@ public interface CatGenreService {
 
     CatGenreDTO getGenreById(long catGenreId);
 
-    CatGenreDTO updateGenre(long genreId, CatGenreDTO catGenreDTO);
+    CatGenreDTO updateGenre(CatGenreDTO catGenreDTO);
 
     CatGenreDTO deleteGenreLogically(long catGenreId);
 }

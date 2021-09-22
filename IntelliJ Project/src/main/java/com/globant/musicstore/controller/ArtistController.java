@@ -43,10 +43,9 @@ public class ArtistController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO<ArtistDTO>> updateArtist(@PathVariable("id") long artistId,
-                                                               @RequestBody ArtistDTO artistDataToUpdate) {
-        ResponseDTO<ArtistDTO> response = new ResponseDTO<ArtistDTO>(Constants.RESPONSE_UPDATE_ARTIST, artistService.updateArtist(artistId, artistDataToUpdate));
+    @PutMapping("/")
+    public ResponseEntity<ResponseDTO<ArtistDTO>> updateArtist(@RequestBody ArtistDTO artistDataToUpdate) {
+        ResponseDTO<ArtistDTO> response = new ResponseDTO<ArtistDTO>(Constants.RESPONSE_UPDATE_ARTIST, artistService.updateArtist(artistDataToUpdate));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

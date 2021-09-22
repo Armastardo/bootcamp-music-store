@@ -1,4 +1,4 @@
-package com.globant.musicstore.service.imp;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dao.HouseRecordDAO;
 import com.globant.musicstore.dto.requestDTO.HouseRecordDTO;
@@ -12,9 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
-public class HouseRecordServiceImp implements HouseRecordService {
+public class HouseRecordServiceImpl implements HouseRecordService {
 
     @Autowired
     private HouseRecordDAO houseRecordDAO;
@@ -38,10 +39,10 @@ public class HouseRecordServiceImp implements HouseRecordService {
 
 
     @Override
-    public HouseRecordDTO updateHouseRecord(long houseRecordId, HouseRecordDTO houseRecordDTO) {
-        HouseRecordDTO getHouseRecordById = getHouseRecordById(houseRecordId);
+    public HouseRecordDTO updateHouseRecord(HouseRecordDTO houseRecordDTO) {
+        long houseRecordId = houseRecordDTO.getId();
+        getHouseRecordById(houseRecordId);
         validationInputFromUser(houseRecordDTO);
-        houseRecordDTO.setId(houseRecordId);
         return houseRecordMapper
                 .houseRecordToDTO(houseRecordDAO
                         .save(houseRecordMapper
@@ -49,7 +50,7 @@ public class HouseRecordServiceImp implements HouseRecordService {
     }
 
     public void validationInputFromUser(HouseRecordDTO houseRecordDTO) {
-        if (houseRecordDTO.getName().isEmpty() || houseRecordDTO.getDescription().isEmpty() || houseRecordDTO.getYearFrom() == null) {
+        if (houseRecordDTO.getName().isEmpty() || houseRecordDTO.getDescription().isEmpty() || Objects.isNull(houseRecordDTO.getYearFrom())) {
             throw new InvalidDataException(Constants.RESPONSE_EXCEPTION_INVALID_DATA);
         }
     }
