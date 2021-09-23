@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.globant.musicstore.dao.InvoiceDAO;
 import com.globant.musicstore.dto.requestDTO.InvoiceDTO;
 import com.globant.musicstore.entity.Invoice;
-import com.globant.musicstore.mapper.InvoiceMapper;
+import com.globant.musicstore.utils.mapper.InvoiceMapper;
 import com.globant.musicstore.service.InvoiceService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class InvoiceServiceImp implements InvoiceService{
 
 	@Autowired
@@ -25,7 +27,7 @@ public class InvoiceServiceImp implements InvoiceService{
 	}
 
 	@Override
-	public InvoiceDTO getInvoice(Integer invoiceId) {
+	public InvoiceDTO getInvoice(Long invoiceId) {
 		
 		return invoiceMapper.EntityToInvoiceDTO(invoiceDAO.getById(invoiceId));
 		
@@ -38,7 +40,7 @@ public class InvoiceServiceImp implements InvoiceService{
 	}
 
 	@Override
-	public InvoiceDTO deleteInvoice(Integer invoiceId) {
+	public InvoiceDTO deleteInvoice(Long invoiceId) {
 
 		Invoice invoiceToBeDisabled = new Invoice();
 		invoiceToBeDisabled = invoiceDAO.getById(invoiceId);

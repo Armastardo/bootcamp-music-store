@@ -1,9 +1,8 @@
 package com.globant.musicstore.controller;
 
-import com.globant.musicstore.dto.AlbumDTO;
 import com.globant.musicstore.dto.ResponseDTO;
 import com.globant.musicstore.dto.SongDTO;
-import com.globant.musicstore.service.impl.SongService;
+import com.globant.musicstore.service.SongService;
 import com.globant.musicstore.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

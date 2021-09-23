@@ -1,4 +1,4 @@
-package com.globant.musicstore.service.impl;
+package com.globant.musicstore.service;
 
 import com.globant.musicstore.dto.AlbumDTO;
 import com.globant.musicstore.entity.Song;

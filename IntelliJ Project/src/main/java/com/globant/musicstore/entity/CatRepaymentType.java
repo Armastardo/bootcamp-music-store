@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "cat_repayment_type")
 public class CatRepaymentType {
     @Id
-    @Column
+    @Column(name = "cat_repayment_type_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long catRepaymentTypeId;
 
@@ -32,4 +32,8 @@ public class CatRepaymentType {
 
     @Column(name = "is_active")
     private Boolean isActive;
+
+    public CatRepaymentType() {
+
+    }
 }

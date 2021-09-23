@@ -1,7 +1,7 @@
-package com.globant.musicstore.service.impl.impl;
+package com.globant.musicstore.service.impl;
 
 import com.globant.musicstore.dto.Cat_GenreDTO;
-import com.globant.musicstore.service.impl.Cat_GenreService;
+import com.globant.musicstore.service.Cat_GenreService;
 import org.springframework.stereotype.Service;
 
 @Service

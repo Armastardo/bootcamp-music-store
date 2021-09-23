@@ -19,7 +19,7 @@ public class ArtistDTO {
     private Date yearFrom;
     private boolean isSingle;
     private String description;
-    private boolean isActive = true;
+    private boolean isActive;
     private HouseRecord houseRecord;
 
     public ArtistDTO() {

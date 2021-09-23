@@ -1,6 +1,8 @@
-package com.globant.musicstore.mapper;
+package com.globant.musicstore.utils.mapper;
 
 
+import com.globant.musicstore.dao.CatRepaymentTypeDAO;
+import com.globant.musicstore.dao.InvoiceDAO;
 import com.globant.musicstore.dao.RepaymentDAO;
 import com.globant.musicstore.dto.RepaymentDTO;
 import com.globant.musicstore.entity.Repayment;
@@ -13,31 +15,33 @@ public class RepaymentMapper {
     @Autowired
     private RepaymentDAO repaymentDAO;
 
+    @Autowired
+    private CatRepaymentTypeDAO catRepaymentTypeDAO;
+
+    @Autowired
+    private InvoiceDAO invoiceDAO;
+
     public RepaymentDTO repaymentEntityToDTO(Repayment repayment) {
-        RepaymentDTO repaymentDTO = RepaymentDTO.builder()
+        return RepaymentDTO.builder()
                 .id(repayment.getId())
                 .date(repayment.getDate())
-                .invoiceId(repayment.getInvoiceId())
-                .catRepaymentId(repayment.getCatRepaymentId().getId())
+                .invoiceId(repayment.getInvoice().getInvoiceId())
+                .catRepaymentId(repayment.getCatRepayment().getCatRepaymentTypeId())
                 .albumId(repayment.getAlbumId())
                 .quantity(repayment.getQuantity())
                 .isActive(repayment.getIsActive())
                 .build();
-
-        return repaymentDTO;
     }
 
     public Repayment repaymentDTOToEntity(RepaymentDTO repaymentDTO) {
-        Repayment repayment = Repayment.builder()
-
+        return Repayment.builder()
+                .id(repaymentDTO.getId())
                 .date(repaymentDTO.getDate())
-                .invoiceId(repaymentDTO.getInvoiceId())
-                .catRepaymentId(repaymentDAO.getById(repaymentDTO.getCatRepaymentId()))
+                .invoice(invoiceDAO.getById(repaymentDTO.getInvoiceId()))
+                .catRepayment(catRepaymentTypeDAO.getById(repaymentDTO.getCatRepaymentId()))
                 .albumId(repaymentDTO.getAlbumId())
                 .quantity(repaymentDTO.getQuantity())
                 .isActive(repaymentDTO.getIsActive())
                 .build();
-
-        return repayment;
     }
 }

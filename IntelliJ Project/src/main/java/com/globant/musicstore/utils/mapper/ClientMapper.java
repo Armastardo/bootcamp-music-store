@@ -20,7 +20,7 @@ public class ClientMapper {
     private ClientTypeDAO clientTypeDAO;
 
     public Client clientDTOToEntity(ClientDTO clientDTO) {
-        Client client = Client.builder()
+        return Client.builder()
                 .id(clientDTO.getId())
                 .name(clientDTO.getName())
                 .surname(clientDTO.getSurname())
@@ -29,11 +29,10 @@ public class ClientMapper {
                 .clientType(clientTypeDAO.getClientType(clientDTO.getClientType()))
                 .isActive(clientDTO.getIsActive())
                 .build();
-        return client;
     }
 
     public ClientDTO clientEntityToDTO(Client client) {
-        ClientDTO clientDTO = ClientDTO.builder()
+        return ClientDTO.builder()
                 .id(client.getId())
                 .name(client.getName())
                 .surname(client.getSurname())
@@ -42,7 +41,6 @@ public class ClientMapper {
                 .clientType(client.getClientType().getId())
                 .isActive(client.getIsActive())
                 .build();
-        return clientDTO;
     }
 
     public List<ClientDTO> clientEntityListToDTOList(List<Client> clientList) {

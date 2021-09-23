@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.globant.musicstore.entity.IntInvoiceAlbum;
 
-public interface IntInvoiceAlbumDAO extends JpaRepository<IntInvoiceAlbum, Integer>{
+public interface IntInvoiceAlbumDAO extends JpaRepository<IntInvoiceAlbum, Long>{
 
 }

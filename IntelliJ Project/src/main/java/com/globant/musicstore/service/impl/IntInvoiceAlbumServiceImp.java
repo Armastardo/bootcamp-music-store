@@ -5,17 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.globant.musicstore.dao.IntInvoiceAlbumDAO;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
-import com.globant.musicstore.entity.Invoice;
-import com.globant.musicstore.mapper.IntInvoiceAlbumDTOMapper;
+import com.globant.musicstore.utils.mapper.IntInvoiceAlbumDTOMapper;
 import com.globant.musicstore.service.IntInvoiceAlbumService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 
 	@Autowired
-	IntInvoiceAlbumDTOMapper intInvoiceAlbumDTOMapper;
+	private IntInvoiceAlbumDTOMapper intInvoiceAlbumDTOMapper;
 	
 	@Autowired
-	IntInvoiceAlbumDAO intInvoiceAlbumDAO;
+	private IntInvoiceAlbumDAO intInvoiceAlbumDAO;
 	
 	@Override
 	public IntInvoiceAlbumDTO createIntInvoiceAlbum(IntInvoiceAlbumDTO intInvoiceAlbumDTO) {
@@ -26,7 +27,7 @@ public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 	}
 
 	@Override
-	public IntInvoiceAlbumDTO getIntInvoiceAlbum(Integer intInvoiceAlbumId) {
+	public IntInvoiceAlbumDTO getIntInvoiceAlbum(Long intInvoiceAlbumId) {
 		return intInvoiceAlbumDTOMapper.EntityToIntInvoiceAlbumDTO(intInvoiceAlbumDAO.getById(intInvoiceAlbumId));
 	}
 
@@ -37,7 +38,7 @@ public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 	}
 
 	@Override
-	public IntInvoiceAlbumDTO deleteIntInvoiceAlbum(Integer intInvoiceAlbumId) {
+	public IntInvoiceAlbumDTO deleteIntInvoiceAlbum(Long intInvoiceAlbumId) {
 		
 		IntInvoiceAlbum intInvoiceToBeDisabled = new IntInvoiceAlbum();
 		intInvoiceToBeDisabled = intInvoiceAlbumDAO.getById(intInvoiceAlbumId);

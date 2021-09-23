@@ -6,10 +6,10 @@ public interface IntInvoiceAlbumService {
 	
 	IntInvoiceAlbumDTO createIntInvoiceAlbum (IntInvoiceAlbumDTO intInvoiceAlbumDTO);
 	
-	IntInvoiceAlbumDTO getIntInvoiceAlbum (Integer intInvoiceAlbumId);
+	IntInvoiceAlbumDTO getIntInvoiceAlbum (Long intInvoiceAlbumId);
 	
 	IntInvoiceAlbumDTO updateIntInvoiceAlbum (IntInvoiceAlbumDTO intInvoiceAlbumDTO);
 	
-	IntInvoiceAlbumDTO deleteIntInvoiceAlbum (Integer intInvoiceAlbumId);
+	IntInvoiceAlbumDTO deleteIntInvoiceAlbum (Long intInvoiceAlbumId);
 	
 }

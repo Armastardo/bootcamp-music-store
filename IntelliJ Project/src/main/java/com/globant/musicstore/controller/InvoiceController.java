@@ -26,7 +26,7 @@ import com.globant.musicstore.service.InvoiceService;
 public class InvoiceController {
 
 	@Autowired
-	InvoiceService invoiceService;
+	private InvoiceService invoiceService;
 	
 	@PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<InvoiceResponseDTO<InvoiceDTO>> createInvoice(@RequestBody InvoiceDTO invoiceDTO){
@@ -36,7 +36,7 @@ public class InvoiceController {
 	}
 	
 	@GetMapping(path = "/{invoiceId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<InvoiceResponseDTO<InvoiceDTO>> getInvoice(@PathVariable Integer invoiceId){
+	public ResponseEntity<InvoiceResponseDTO<InvoiceDTO>> getInvoice(@PathVariable Long invoiceId){
 		
 		InvoiceResponseDTO invoiceResponseDTO = new InvoiceResponseDTO(INVOICE_FOUNDED_SUCCESSFULLY, invoiceService.getInvoice(invoiceId));		
 		return new ResponseEntity<>(invoiceResponseDTO, HttpStatus.ACCEPTED);
@@ -51,7 +51,7 @@ public class InvoiceController {
 	}
 	
 	@PutMapping(path = "/{invoiceId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<InvoiceResponseDTO<InvoiceDTO>> deleteInvoice(@PathVariable Integer invoiceId) {
+	public ResponseEntity<InvoiceResponseDTO<InvoiceDTO>> deleteInvoice(@PathVariable Long invoiceId) {
 		
 		InvoiceResponseDTO invoiceResponseDTO  = new InvoiceResponseDTO(INVOICE_DELETED_SUCCESSFULLY , invoiceService.deleteInvoice(invoiceId));
 		return new ResponseEntity<>(invoiceResponseDTO, HttpStatus.OK);

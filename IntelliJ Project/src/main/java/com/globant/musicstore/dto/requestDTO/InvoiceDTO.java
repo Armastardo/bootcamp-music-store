@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class InvoiceDTO {
 	
-	private Integer invoiceId ;
+	private Long invoiceId ;
 	private Client clientId;
 	private Date invoiceDate;
 	private Double totalAmount;

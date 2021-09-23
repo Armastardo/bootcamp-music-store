@@ -33,7 +33,7 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "invoice_id ")
-	private Integer invoiceId ;
+	private Long invoiceId ;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id ")
