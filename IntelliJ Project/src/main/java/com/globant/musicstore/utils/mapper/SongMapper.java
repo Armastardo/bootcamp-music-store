@@ -25,7 +25,7 @@ public class SongMapper {
         song.setDuration(songDTO.getDuration());
         song.setIsActive((songDTO.getIsActive()));
         song.setAlbum(albumDAO.getAlbum(songDTO.getAlbumId()));
-        song.setCatGenre(catGenreDAO.getCatGenre(songDTO.getCatGenreId()));
+        song.setCatGenre(catGenreDAO.findById(songDTO.getCatGenreId()).get());
         return song;
     }
 
