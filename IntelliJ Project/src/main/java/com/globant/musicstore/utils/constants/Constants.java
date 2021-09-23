@@ -26,4 +26,7 @@ public class Constants {
 
     public static final String RESPONSE_EXCEPTION_NOT_FOUND="Sorry, the id you gave us is invalid or does not exist in the DB";
     public static final String RESPONSE_EXCEPTION_INVALID_DATA="Sorry, maybe you write some data wrong or any field was empty";
+
+    public static final String RESPONSE_NOT_ENOUGH_INVENTORY = "Sorry! That article might have just went out of stock";
+    public static final String RESPONSE_EXCEPTION_NOT_ENOUGH_INVENTORY = "We don't have enough inventory to satisfy this purchase";
 }

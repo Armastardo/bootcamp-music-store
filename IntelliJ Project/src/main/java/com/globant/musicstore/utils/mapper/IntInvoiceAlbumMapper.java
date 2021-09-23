@@ -9,7 +9,7 @@ import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
 
 @Component
-public class IntInvoiceAlbumDTOMapper {
+public class IntInvoiceAlbumMapper {
 	
 	@Autowired
 	AlbumDAO albumDAO;
@@ -22,8 +22,8 @@ public class IntInvoiceAlbumDTOMapper {
 		
 		IntInvoiceAlbum intInvoiceAlbum = IntInvoiceAlbum.builder()
 				.intInvoiceAlbumId(intInvoiceAlbumDTO.getIntInvoiceAlbumId())
-				.invoiceId(invoiceDAO.getInvoice(intInvoiceAlbumDTO.getAlbumId().getId()))
-				.albumId(albumDAO.getAlbum(intInvoiceAlbumDTO.getAlbumId().getId()))
+				.invoiceId(invoiceDAO.getInvoice(intInvoiceAlbumDTO.getAlbumId()))
+				.albumId(albumDAO.getAlbum(intInvoiceAlbumDTO.getAlbumId()))
 				.albumQuantity(intInvoiceAlbumDTO.getAlbumQuantity())
 				.isActive(intInvoiceAlbumDTO.getIsActive())
 				.build();
@@ -36,8 +36,8 @@ public class IntInvoiceAlbumDTOMapper {
 		
 		IntInvoiceAlbumDTO intInvoiceAlbumDTO = IntInvoiceAlbumDTO.builder()
 				.intInvoiceAlbumId(intInvoiceAlbum.getIntInvoiceAlbumId())
-				.invoiceId(intInvoiceAlbum.getInvoiceId())
-				.albumId(intInvoiceAlbum.getAlbumId())
+				.invoiceId(intInvoiceAlbum.getInvoiceId().getInvoiceId())
+				.albumId(intInvoiceAlbum.getAlbumId().getId())
 				.albumQuantity(intInvoiceAlbum.getAlbumQuantity())
 				.isActive(intInvoiceAlbum.getIsActive())
 				.build();

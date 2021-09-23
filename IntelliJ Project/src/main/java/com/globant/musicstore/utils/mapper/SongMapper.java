@@ -12,46 +12,43 @@ import java.util.List;
 
 @Component
 public class SongMapper {
-	
+
     @Autowired
     AlbumDAO albumDAO;
 
     @Autowired
     CatGenreDAO catGenreDAO;
 
-    public Song songDTOToEntity(SongDTO songDTO){
-    	
-    	return Song.builder()
-    			.id(songDTO.getId())
-    			.name(songDTO.getName())
-    			.duration(songDTO.getDuration())
-    			.isActive(songDTO.getIsActive())
-    			.album(albumDAO.getAlbum(songDTO.getAlbumId()))
-				.catGenre(catGenreDAO.findById(songDTO.getCatGenreId()).get())
-				.build();    	
+    public Song songDTOToEntity(SongDTO songDTO) {
+        return Song.builder()
+                .id(songDTO.getId())
+                .name(songDTO.getName())
+                .duration(songDTO.getDuration())
+                .isActive(songDTO.getIsActive())
+                .album(albumDAO.getAlbum(songDTO.getAlbumId()))
+                .catGenre(catGenreDAO.findById(songDTO.getCatGenreId()).get())
+                .build();
 
     }
 
-    public SongDTO songEntityToDTO(Song song){
-       
-
-    	return SongDTO.builder()
-    			.id(song.getId())
-    			.name(song.getName())
-    			.duration(song.getDuration())
-    			.isActive(song.getIsActive())
-    			.albumId(song.getAlbum().getId())
-				.catGenreId(song.getCatGenre().getId())
-				.build();
+    public SongDTO songEntityToDTO(Song song) {
+        return SongDTO.builder()
+                .id(song.getId())
+                .name(song.getName())
+                .duration(song.getDuration())
+                .isActive(song.getIsActive())
+                .albumId(song.getAlbum().getId())
+                .catGenreId(song.getCatGenre().getId())
+                .build();
     }
 
-    public List<SongDTO> listSongToDTO(List<Song> songList){
+    public List<SongDTO> listSongToDTO(List<Song> songList) {
         List<SongDTO> songDTOList = new ArrayList<SongDTO>();
         songList.forEach(song -> songDTOList.add(songEntityToDTO(song)));
         return songDTOList;
     }
 
-    public List<Song> listSongDTOToEntity(List<SongDTO> songList){
+    public List<Song> listSongDTOToEntity(List<SongDTO> songList) {
         List<Song> songEntityList = new ArrayList<Song>();
         songList.forEach(song -> songEntityList.add(songDTOToEntity(song)));
         return songEntityList;

@@ -25,8 +25,8 @@ import lombok.Setter;
 public class IntInvoiceAlbumDTO {
 
 	private Integer intInvoiceAlbumId ;	
-	private Invoice invoiceId;	
-	private Album albumId;	
+	private Long invoiceId;
+	private Long albumId;
 	private Integer albumQuantity;	
 	private Boolean isActive;
 	

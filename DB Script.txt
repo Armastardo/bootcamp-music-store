@@ -148,3 +148,13 @@ INSERT INTO cat_client_type VALUES
 
 INSERT INTO client VALUES
 (DEFAULT, 'Generic', 'Generic', 'Generic');
+
+INSERT INTO house_record VALUES
+(DEFAULT, 'Fader Label', '2012-01-01', 'Independent record label based in New York City', TRUE);
+
+INSERT INTO artist VALUES
+(DEFAULT, 'Clairo', '2012-01-01', TRUE, 'Claire Elizabeth Cottrill', 1, TRUE);
+
+INSERT INTO album VALUES
+(DEFAULT, 'Immunity', '2019-08-02', 'Second studio album', true, 3, 250, 1),
+(DEFAULT, 'Sling', '2021-06-11', 'Third studio album', true, 3, 250, 1);

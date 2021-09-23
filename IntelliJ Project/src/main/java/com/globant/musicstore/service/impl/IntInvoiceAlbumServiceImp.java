@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.globant.musicstore.dao.IntInvoiceAlbumDAO;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
-import com.globant.musicstore.utils.mapper.IntInvoiceAlbumDTOMapper;
+import com.globant.musicstore.utils.mapper.IntInvoiceAlbumMapper;
 import com.globant.musicstore.service.IntInvoiceAlbumService;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class IntInvoiceAlbumServiceImp implements IntInvoiceAlbumService{
 
 	@Autowired
-	private IntInvoiceAlbumDTOMapper intInvoiceAlbumDTOMapper;
+	private IntInvoiceAlbumMapper intInvoiceAlbumDTOMapper;
 	
 	@Autowired
 	private IntInvoiceAlbumDAO intInvoiceAlbumDAO;

@@ -17,8 +17,9 @@ public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "album_id")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "album_name")
     private String name;
     @Column(name = "year_creation")
     private Date yearCreation;

@@ -3,6 +3,7 @@ package com.globant.musicstore.config;
 import com.globant.musicstore.dto.responseDTO.ResponseDTO;
 import com.globant.musicstore.exception.InvalidDataException;
 import com.globant.musicstore.exception.ModelNotFoundException;
+import com.globant.musicstore.exception.NotEnoughInventoryException;
 import com.globant.musicstore.utils.constants.Constants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,5 +22,12 @@ public class ExceptionManager {
     public ResponseEntity<ResponseDTO<String>> handleInvalidInput(InvalidDataException invalidDataException) {
         ResponseDTO<String> response = new ResponseDTO<String>(Constants.RESPONSE_INVALID_DATA_INPUT, invalidDataException.getMessage());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotEnoughInventoryException.class)
+    public ResponseEntity<ResponseDTO<String>>  handleNotEnoughInventory (NotEnoughInventoryException notEnoughInventoryException) {
+        ResponseDTO<String> responseDTO = new ResponseDTO<>(Constants.RESPONSE_NOT_ENOUGH_INVENTORY, notEnoughInventoryException.getMessage());
+        return new ResponseEntity<>(responseDTO, HttpStatus.CONFLICT);
+
     }
 }
