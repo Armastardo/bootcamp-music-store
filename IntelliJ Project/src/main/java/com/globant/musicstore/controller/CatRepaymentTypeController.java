@@ -1,6 +1,5 @@
 package com.globant.musicstore.controller;
 
-
 import com.globant.musicstore.dto.CatRepaymentTypeDTO;
 import com.globant.musicstore.dto.ResponseDTO;
 import com.globant.musicstore.service.CatRepaymentTypeService;
@@ -22,9 +21,8 @@ import static com.globant.musicstore.utils.Constants.ID_FOUNDED_SUCCESSFULLY;
 import static com.globant.musicstore.utils.Constants.ITEM_ADDED_SUCCESSFULLY;
 import static com.globant.musicstore.utils.Constants.ITEM_UPDATED_SUCCESSFULLY;
 
-
 @RestController
-@RequestMapping
+@RequestMapping("/api/repayments")
 public class CatRepaymentTypeController {
 
     @Autowired

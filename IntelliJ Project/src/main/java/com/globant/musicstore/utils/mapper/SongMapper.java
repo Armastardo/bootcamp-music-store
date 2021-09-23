@@ -12,6 +12,7 @@ import java.util.List;
 
 @Component
 public class SongMapper {
+	
     @Autowired
     AlbumDAO albumDAO;
 
@@ -19,25 +20,28 @@ public class SongMapper {
     CatGenreDAO catGenreDAO;
 
     public Song songDTOToEntity(SongDTO songDTO){
-        Song song = new Song();
-        song.setId(songDTO.getId());
-        song.setName(songDTO.getName());
-        song.setDuration(songDTO.getDuration());
-        song.setIsActive((songDTO.getIsActive()));
-        song.setAlbum(albumDAO.getAlbum(songDTO.getAlbumId()));
-        song.setCatGenre(catGenreDAO.getCatGenre(songDTO.getCatGenreId()));
-        return song;
+    	
+    	return Song.builder()
+    			.id(songDTO.getId())
+    			.name(songDTO.getName())
+    			.duration(songDTO.getDuration())
+    			.isActive(songDTO.getIsActive())
+    			.album(albumDAO.getAlbum(songDTO.getAlbumId()))
+				.catGenre(catGenreDAO.getCatGenre(songDTO.getCatGenreId()))
+				.build();    	
     }
 
     public SongDTO songEntityToDTO(Song song){
-        SongDTO songDTO = new SongDTO();
-        songDTO.setId(song.getId());
-        songDTO.setName(song.getName());
-        songDTO.setDuration(song.getDuration());
-        songDTO.setIsActive(song.getIsActive());
-        songDTO.setAlbumId(song.getAlbum().getId());
-        songDTO.setCatGenreId(song.getCatGenre().getId());
-        return songDTO;
+       
+
+    	return SongDTO.builder()
+    			.id(song.getId())
+    			.name(song.getName())
+    			.duration(song.getDuration())
+    			.isActive(song.getIsActive())
+    			.albumId(song.getAlbum().getId())
+				.catGenreId(song.getCatGenre().getId())
+				.build();
     }
 
     public List<SongDTO> listSongToDTO(List<Song> songList){
