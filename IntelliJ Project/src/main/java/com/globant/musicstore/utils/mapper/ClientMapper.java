@@ -1,14 +1,15 @@
 package com.globant.musicstore.utils.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.globant.musicstore.dao.ClientDAO;
 import com.globant.musicstore.dao.ClientTypeDAO;
 import com.globant.musicstore.dto.ClientDTO;
 import com.globant.musicstore.entity.Client;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class ClientMapper {

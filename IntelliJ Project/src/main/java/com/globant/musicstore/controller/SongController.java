@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import static com.globant.musicstore.utils.Constants.*;
 
 @RestController
-@RequestMapping("/song")
+@RequestMapping("/api/song")
 public class SongController {
-
 
     @Autowired
     SongService songService;

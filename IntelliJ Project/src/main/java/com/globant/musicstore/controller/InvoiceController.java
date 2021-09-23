@@ -22,7 +22,7 @@ import com.globant.musicstore.dto.responseDTO.InvoiceResponseDTO;
 import com.globant.musicstore.service.InvoiceService;
 
 @RestController
-@RequestMapping("invoice")
+@RequestMapping("/api/invoice")
 public class InvoiceController {
 
 	@Autowired

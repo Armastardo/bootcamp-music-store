@@ -1,20 +1,29 @@
 package com.globant.musicstore.utils.mapper;
 
-import com.globant.musicstore.dto.AlbumDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.globant.musicstore.dao.AlbumDAO;
+import com.globant.musicstore.dao.InvoiceDAO;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.entity.IntInvoiceAlbum;
-import com.globant.musicstore.entity.Invoice;
-import org.springframework.stereotype.Component;
 
 @Component
 public class IntInvoiceAlbumDTOMapper {
 	
+	@Autowired
+	AlbumDAO albumDAO;
+	
+	@Autowired
+	InvoiceDAO invoiceDAO;
+	
 	public IntInvoiceAlbum IntInvoiceAlbumDTOToEntity(IntInvoiceAlbumDTO intInvoiceAlbumDTO  ) {
+			
 		
 		IntInvoiceAlbum intInvoiceAlbum = IntInvoiceAlbum.builder()
 				.intInvoiceAlbumId(intInvoiceAlbumDTO.getIntInvoiceAlbumId())
-				.invoiceId(intInvoiceAlbumDTO.getInvoiceId())
-				.albumId(intInvoiceAlbumDTO.getAlbumId())
+				.invoiceId(invoiceDAO.getInvoice(intInvoiceAlbumDTO.getAlbumId().getId()))
+				.albumId(albumDAO.getAlbum(intInvoiceAlbumDTO.getAlbumId().getId()))
 				.albumQuantity(intInvoiceAlbumDTO.getAlbumQuantity())
 				.isActive(intInvoiceAlbumDTO.getIsActive())
 				.build();
