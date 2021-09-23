@@ -1,9 +1,9 @@
 package com.globant.musicstore.controller;
 
 import static com.globant.musicstore.utils.IntInvoiceAlbumConstants.INTINVOICEALBUM_ADDED_SUCCESSFULLY;
+import static com.globant.musicstore.utils.IntInvoiceAlbumConstants.INTINVOICEALBUM_DELETED_SUCCESSFULLY;
 import static com.globant.musicstore.utils.IntInvoiceAlbumConstants.INTINVOICEALBUM_FOUNDED_SUCCESSFULLY;
 import static com.globant.musicstore.utils.IntInvoiceAlbumConstants.INTINVOICEALBUM_UPDATED_SUCCESSFULLY;
-import static com.globant.musicstore.utils.IntInvoiceAlbumConstants.INTINVOICEALBUM_DELETED_SUCCESSFULLY;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.dto.responseDTO.IntInvoiceAlbumResponseDTO;
 import com.globant.musicstore.service.IntInvoiceAlbumService;
-import com.globant.musicstore.utils.IntInvoiceAlbumConstants.ResponseConstants;
 
 @RestController
-@RequestMapping("intInvoiceAlbumController")
+@RequestMapping("/api/int-invoice-album")
 public class IntInvoiceAlbumController {
 
 	@Autowired

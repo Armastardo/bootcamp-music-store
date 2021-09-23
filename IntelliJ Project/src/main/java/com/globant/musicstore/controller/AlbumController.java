@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import static com.globant.musicstore.utils.Constants.*;
 
 @RestController
-@RequestMapping("/album")
+@RequestMapping("/api/album")
 public class AlbumController {
 
     @Autowired
