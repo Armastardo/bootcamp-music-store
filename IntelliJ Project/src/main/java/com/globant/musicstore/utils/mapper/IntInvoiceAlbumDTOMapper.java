@@ -22,7 +22,7 @@ public class IntInvoiceAlbumDTOMapper {
 		
 		IntInvoiceAlbum intInvoiceAlbum = IntInvoiceAlbum.builder()
 				.intInvoiceAlbumId(intInvoiceAlbumDTO.getIntInvoiceAlbumId())
-				.invoiceId(invoiceDAO.getinvoice(intInvoiceAlbumDTO.getAlbumId().getId()))
+				.invoiceId(invoiceDAO.getInvoice(intInvoiceAlbumDTO.getAlbumId().getId()))
 				.albumId(albumDAO.getAlbum(intInvoiceAlbumDTO.getAlbumId().getId()))
 				.albumQuantity(intInvoiceAlbumDTO.getAlbumQuantity())
 				.isActive(intInvoiceAlbumDTO.getIsActive())

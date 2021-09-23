@@ -7,6 +7,6 @@ import com.globant.musicstore.entity.Invoice;
 
 public interface InvoiceDAO extends JpaRepository<Invoice, Long>{
 	@Query("SELECT invoice From Invoice invoice WHERE invoice.invoiceId IN :id")
-	Invoice getinvoice (Long id);
+	Invoice getInvoice (Long id);
 
 }

@@ -17,7 +17,7 @@ public class InvoiceMapper {
 		
 		Invoice invoice = Invoice.builder()
 				.invoiceId(invoiceDTO.getInvoiceId())
-				.clientId(clientDAO.getInvoice(invoiceDTO.getClientId().getId()))
+				.clientId(clientDAO.getClient(invoiceDTO.getClientId().getId()))
 				.invoiceDate(invoiceDTO.getInvoiceDate())
 				.totalAmount(invoiceDTO.getTotalAmount())
 				.isActive(invoiceDTO.getIsActive())

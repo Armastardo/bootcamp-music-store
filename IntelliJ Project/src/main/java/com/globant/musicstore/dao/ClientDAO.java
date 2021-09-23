@@ -7,7 +7,7 @@ import com.globant.musicstore.entity.Client;
 
 public interface ClientDAO extends JpaRepository<Client, Long> {
 	@Query("SELECT client From Client client WHERE client.id IN :id")
-	Client getInvoice(Long id);
+	Client getClient(Long id);
 
 
 }
