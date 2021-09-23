@@ -4,7 +4,7 @@ CREATE TABLE cat_client_type (
 	cat_client_type_id SERIAL,
 	cat_client_type varchar (50),
 	cat_client_description varchar (150),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (cat_client_type_id)
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE cat_repayment_type (
 	cat_repayment_type_id SERIAL,
 	cat_repayment_type varchar(100),
 	cat_repayment_description varchar(255),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (cat_repayment_type_id)
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE invoice (
 	client_id integer,
 	invoice_date date,
 	amount decimal,
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (invoice_id),
 	CONSTRAINT fk_client_id
 		FOREIGN KEY (client_id)
@@ -55,7 +55,7 @@ CREATE TABLE repayment (
 			REFERENCES cat_repayment_type(cat_repayment_type_id),
 	album_id integer,
 	quantity integer,
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (repayment_id)
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE int_invoice_album (
 			REFERENCES invoice(invoice_id),
 	album_id integer,
 	album_quantity integer,
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (int_invoice_album_id)
 );
 
@@ -76,7 +76,7 @@ CREATE TABLE album (
 	album_name varchar(150),
 	year_creation date,
 	description varchar(255),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	quantity_available integer,
 	price decimal,
 	artist_id integer,
@@ -87,7 +87,7 @@ CREATE TABLE cat_genre (
 	cat_genre_id SERIAL,
 	cat_genre_name varchar(255),
 	description varchar (255),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (cat_genre_id)
 );
 
@@ -103,7 +103,7 @@ CREATE TABLE song (
 	CONSTRAINT fk_song_album_id
 		FOREIGN KEY (album_id)
 			REFERENCES album(album_id),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (song_id)
 );
 
@@ -112,7 +112,7 @@ CREATE TABLE house_record (
 	house_record_name varchar(255),
 	year_from date,
 	description varchar(255),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (house_record_id)
 );
 
@@ -126,7 +126,7 @@ CREATE TABLE artist (
 	CONSTRAINT fk_artist_house_record_id
 		FOREIGN KEY (house_record_id)
 			REFERENCES house_record (house_record_id),
-	is_active boolean,
+	is_active boolean DEFAULT TRUE,
 	PRIMARY KEY (artist_id)
 );
 
@@ -140,6 +140,9 @@ ALTER TABLE album
 		FOREIGN KEY (artist_id)
 			REFERENCES artist (artist_id);
 
+INSERT INTO house_record VALUES
+(DEFAULT, 'Sony Records','1950-03-09', 'most popular');
+
 INSERT INTO cat_client_type VALUES
 (DEFAULT, 'Bronce', '0 a 5 estrellas', TRUE),
 (DEFAULT, 'Plata', '6 a 20 estrellas', TRUE),
@@ -149,16 +152,20 @@ INSERT INTO cat_client_type VALUES
 INSERT INTO client VALUES
 (DEFAULT, 'Generic', 'Generic', 'Generic');
 
-INSERT INTO house_record VALUES
-(DEFAULT, 'Fader Label', '2012-01-01', 'Independent record label based in New York City', TRUE);
-
 INSERT INTO artist VALUES
-(DEFAULT, 'Clairo', '2012-01-01', TRUE, 'Claire Elizabeth Cottrill', 1, TRUE);
-
-INSERT INTO album VALUES
-(DEFAULT, 'Immunity', '2019-08-02', 'Second studio album', true, 3, 250, 1),
-(DEFAULT, 'Sling', '2021-06-11', 'Third studio album', true, 3, 250, 1);
+(DEFAULT, 'Michael Jackson', '1970-04-09',TRUE ,'king of pop',1);
 
 INSERT INTO cat_repayment_type VALUES
-(DEFAULT, 'No reason', 'No reason was provided for this operation', TRUE),
-(DEFAULT, 'Broken', 'The record was broken and it didnt work', TRUE);
+(DEFAULT, 'Partial', 'Broken');
+
+INSERT INTO album VALUES
+(DEFAULT, 'Thriller', '1982-07-08','many popular songs',TRUE,1000, 200,1);
+
+INSERT INTO cat_genre VALUES
+(DEFAULT, 'Pop','Mix of rock');
+
+INSERT INTO song VALUES
+(DEFAULT, 'Billie Jean',180,1,1);
+
+
+
