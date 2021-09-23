@@ -34,7 +34,7 @@ public class Song {
     private Album album;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "cat_genre_id", referencedColumnName = "id")
-    private Cat_Genre catGenre;
+    @JoinColumn(name = "cat_genre_id", referencedColumnName = "cat_genre_id")
+    private CatGenre catGenre;
 
 }
