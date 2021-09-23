@@ -1,7 +1,6 @@
 package com.globant.musicstore.entity;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -35,11 +34,8 @@ public class Artist {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "house_record_id", referencedColumnName = "house_record_id")
     @JsonIgnoreProperties("artists")
     private HouseRecord houseRecord;
-
-    @OneToMany(mappedBy = "artist")
-    private List<Album> albums;
 }
