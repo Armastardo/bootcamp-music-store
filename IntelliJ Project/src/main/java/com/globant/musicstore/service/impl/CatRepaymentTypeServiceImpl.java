@@ -4,8 +4,9 @@ package com.globant.musicstore.service.impl;
 import com.globant.musicstore.dao.CatRepaymentTypeDAO;
 import com.globant.musicstore.dto.CatRepaymentTypeDTO;
 import com.globant.musicstore.exception.InvalidDataException;
-import com.globant.musicstore.mapper.CatRepaymentTypeMapper;
 import com.globant.musicstore.service.CatRepaymentTypeService;
+import com.globant.musicstore.utils.mapper.CatRepaymentTypeMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
