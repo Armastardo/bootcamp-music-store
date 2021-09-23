@@ -1,6 +1,7 @@
 package com.globant.musicstore.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,7 +21,7 @@ import lombok.AllArgsConstructor;
 @Table(name = "artist")
 public class Artist {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "artist_id")
     private long id;
     @Column(name = "artist_name", nullable = false)
@@ -38,8 +39,8 @@ public class Artist {
     @JoinColumn(name = "house_record_id", referencedColumnName = "house_record_id")
     @JsonIgnoreProperties("artists")
     private HouseRecord houseRecord;
-    
-    @OneToMany(targetEntity = Album.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "album_id", referencedColumnName = "id")
-    private Album album;
+
+    /*@OneToMany(targetEntity = Album.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "album_id")
+    private List<Album> album;*/
 }

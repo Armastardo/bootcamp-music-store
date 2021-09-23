@@ -21,12 +21,12 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "int_invoice_album ")
+@Table(name = "int_invoice_album")
 public class IntInvoiceAlbum {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "int_invoice_album_id ")
+	@Column(name = "int_invoice_album_id")
 	private Integer intInvoiceAlbumId ;
 	
 	@ManyToOne
@@ -34,7 +34,7 @@ public class IntInvoiceAlbum {
 	private Invoice invoiceId;
 	
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "album_id")
 	private Album albumId;
 	
 	@Column(name = "album_quantity")

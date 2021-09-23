@@ -19,7 +19,7 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "song_name")
     private String name;
 
     @Column(name = "duration")
@@ -30,7 +30,7 @@ public class Song {
 
     @ManyToOne(targetEntity = Album.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     //@JsonBackReference
-    @JoinColumn(name = "album_id", referencedColumnName = "id")
+    @JoinColumn(name = "album_id", referencedColumnName = "album_id")
     private Album album;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})

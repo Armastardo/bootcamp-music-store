@@ -17,7 +17,7 @@ import lombok.Setter;
 public class InvoiceDTO {
 	
 	private Long invoiceId ;
-	private Client clientId;
+	private Long clientId;
 	private Date invoiceDate;
 	private Double totalAmount;
 	private Boolean isActive;
