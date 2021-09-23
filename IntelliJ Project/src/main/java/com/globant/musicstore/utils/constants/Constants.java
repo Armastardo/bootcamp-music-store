@@ -29,4 +29,6 @@ public class Constants {
 
     public static final String RESPONSE_NOT_ENOUGH_INVENTORY = "Sorry! That article might have just went out of stock";
     public static final String RESPONSE_EXCEPTION_NOT_ENOUGH_INVENTORY = "We don't have enough inventory to satisfy this purchase";
+    public static final String PURCHASE_SUCCESSFULL = "Thank you! The operation was done successfully";
+    public static final String REPAYMENT_SUCCESSFULL = "The return of the item(s) was done successfully";
 }

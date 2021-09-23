@@ -3,31 +3,40 @@ package com.globant.musicstore.service.impl;
 import com.globant.musicstore.dao.AlbumDAO;
 import com.globant.musicstore.dao.IntInvoiceAlbumDAO;
 import com.globant.musicstore.dao.InvoiceDAO;
+import com.globant.musicstore.dao.RepaymentDAO;
+import com.globant.musicstore.dto.RepaymentDTO;
 import com.globant.musicstore.dto.requestDTO.IntInvoiceAlbumDTO;
 import com.globant.musicstore.dto.requestDTO.InvoiceDTO;
 import com.globant.musicstore.dto.requestDTO.PurchaseRequestDTO;
+import com.globant.musicstore.dto.requestDTO.RepaymentRequestDTO;
 import com.globant.musicstore.dto.responseDTO.PurchaseResponseDTO;
 import com.globant.musicstore.entity.Album;
 import com.globant.musicstore.exception.NotEnoughInventoryException;
 import com.globant.musicstore.service.ClientService;
-import com.globant.musicstore.service.PurchaseService;
+import com.globant.musicstore.service.StoreService;
 import com.globant.musicstore.utils.constants.Constants;
 import com.globant.musicstore.utils.mapper.IntInvoiceAlbumMapper;
 import com.globant.musicstore.utils.mapper.InvoiceMapper;
+import com.globant.musicstore.utils.mapper.RepaymentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
-public class PurchaseServiceImpl implements PurchaseService {
+public class StoreServiceImpl implements StoreService {
 
     @Autowired
     private AlbumDAO albumDAO;
 
     @Autowired
     private InvoiceDAO invoiceDAO;
+
+    @Autowired
+    private RepaymentDAO repaymentDAO;
 
     @Autowired
     private IntInvoiceAlbumDAO intInvoiceAlbumDAO;
@@ -39,8 +48,10 @@ public class PurchaseServiceImpl implements PurchaseService {
     private InvoiceMapper invoiceMapper;
 
     @Autowired
-    private ClientService clientService;
+    private RepaymentMapper repaymentMapper;
 
+    @Autowired
+    private ClientService clientService;
 
     @Override
     public PurchaseResponseDTO purchaseAlbum(PurchaseRequestDTO purchaseDTO) {
@@ -60,6 +71,27 @@ public class PurchaseServiceImpl implements PurchaseService {
 
         return purchaseResponseDTO;
     }
+
+    @Override
+    public List<RepaymentDTO> returnItems(RepaymentRequestDTO repaymentRequestDTO) {
+        List<RepaymentDTO> returnedItemList = new ArrayList<>();
+
+        for (Map.Entry<Long, Long> entry : repaymentRequestDTO.getReturnMap().entrySet()) {
+            RepaymentDTO repaymentDTO = RepaymentDTO.builder()
+                    .date(new Date())
+                    .invoiceId(repaymentRequestDTO.getInvoiceId())
+                    .catRepaymentId(entry.getValue())
+                    .albumId(entry.getKey())
+                    .quantity(1)
+                    .isActive(Boolean.TRUE)
+                    .build();
+            Album returnedAlbum = albumDAO.getAlbum(entry.getKey());
+            returnedAlbum.setQuantityAvailable(returnedAlbum.getQuantityAvailable() + 1);
+            returnedItemList.add(repaymentMapper.repaymentEntityToDTO(repaymentDAO.save(repaymentMapper.repaymentDTOToEntity(repaymentDTO))));
+        }
+        return returnedItemList;
+    }
+
 
     private Double decreaseAlbumExistence(Long albumId, Integer quantity) {
         double albumTotalCost = 0D;

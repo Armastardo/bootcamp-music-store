@@ -43,7 +43,7 @@ public class Repayment {
     private CatRepaymentType catRepayment;
 
     @Column(name = "album_id")
-    private Integer albumId;
+    private Long albumId;
 
     @Column(name = "quantity")
     private Integer quantity;
