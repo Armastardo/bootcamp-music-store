@@ -39,8 +39,4 @@ public class Artist {
     @JoinColumn(name = "house_record_id", referencedColumnName = "house_record_id")
     @JsonIgnoreProperties("artists")
     private HouseRecord houseRecord;
-
-    /*@OneToMany(targetEntity = Album.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "album_id")
-    private List<Album> album;*/
 }
